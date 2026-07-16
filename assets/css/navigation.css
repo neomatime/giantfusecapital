@@ -16,8 +16,8 @@
   align-items: center;
   justify-content: space-between;
 }
-.navbar-logo { display: flex; align-items: baseline; gap: var(--space-8); font-weight: 700; color: var(--color-teal); font-size: 1.1rem; }
-.navbar-logo-sub { color: var(--color-navy); font-weight: 400; font-size: 0.9rem; }
+.navbar-logo { display: flex; align-items: center; }
+.navbar-logo img { height: 36px; width: auto; }
 .navbar-links { display: none; align-items: center; gap: var(--space-24); }
 @media (min-width: 1025px) { .navbar-links { display: flex; } }
 .navbar-links a { font-size: 0.9rem; font-weight: 500; color: var(--color-navy); }
