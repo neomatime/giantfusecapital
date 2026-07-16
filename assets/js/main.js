@@ -46,6 +46,7 @@
       loadCardTemplate('strategy-card'),
       fetch('data/strategies.json'),
     ]);
+    if (!response.ok) throw new Error('Failed to load data: data/strategies.json');
     const items = await response.json();
     renderCards(template, items, container, (node, item) => {
       node.querySelector('[data-field="icon"]').innerHTML = ICONS[item.icon] || '';
@@ -62,6 +63,7 @@
       loadCardTemplate('stat-card'),
       fetch('data/statistics.json'),
     ]);
+    if (!response.ok) throw new Error('Failed to load data: data/statistics.json');
     const items = await response.json();
     renderCards(template, items, container, (node, item) => {
       node.querySelector('[data-field="icon"]').innerHTML = ICONS[item.icon] || '';
@@ -84,6 +86,7 @@
     const template = document.querySelector('#insight-card-template');
     if (!container || !template) return;
     const response = await fetch('data/insights.json');
+    if (!response.ok) throw new Error('Failed to load data: data/insights.json');
     const items = await response.json();
     renderCards(template, items.slice(0, 3), container, (node, item) => {
       node.querySelector('[data-field="category"]').textContent = item.category;
@@ -101,11 +104,16 @@
       includeStatic('footer', '[data-include="footer"]'),
     ]);
     if (window.Giantfuse && window.Giantfuse.Nav) window.Giantfuse.Nav.init();
-    await renderStrategies();
-    await renderStatistics();
-    await renderInsights();
-    if (window.Giantfuse && window.Giantfuse.ScrollEffects) {
-      window.Giantfuse.ScrollEffects.init();
+    try {
+      await renderStrategies();
+      await renderStatistics();
+      await renderInsights();
+    } catch (error) {
+      console.error('Failed to render dynamic content:', error);
+    } finally {
+      if (window.Giantfuse && window.Giantfuse.ScrollEffects) {
+        window.Giantfuse.ScrollEffects.init();
+      }
     }
   }
 
