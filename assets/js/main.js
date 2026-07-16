@@ -39,12 +39,29 @@
     });
   }
 
+  async function renderStrategies() {
+    const container = document.querySelector('#strategies-grid');
+    if (!container) return;
+    const [template, response] = await Promise.all([
+      loadCardTemplate('strategy-card'),
+      fetch('data/strategies.json'),
+    ]);
+    const items = await response.json();
+    renderCards(template, items, container, (node, item) => {
+      node.querySelector('[data-field="icon"]').innerHTML = ICONS[item.icon] || '';
+      node.querySelector('[data-field="title"]').textContent = item.title;
+      node.querySelector('[data-field="description"]').textContent = item.description;
+      node.querySelector('[data-field="link"]').setAttribute('href', item.link);
+    });
+  }
+
   async function init() {
     await Promise.all([
       includeStatic('navbar', '[data-include="navbar"]'),
       includeStatic('footer', '[data-include="footer"]'),
     ]);
     if (window.Giantfuse && window.Giantfuse.Nav) window.Giantfuse.Nav.init();
+    await renderStrategies();
   }
 
   if (typeof document !== 'undefined') {

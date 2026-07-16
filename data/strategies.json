@@ -1,0 +1,6 @@
+[
+  { "icon": "growth", "title": "Private Equity", "description": "Partnering with exceptional businesses to unlock value and drive sustainable growth across sectors.", "link": "strategies.html#private-equity" },
+  { "icon": "pie", "title": "Hedge Fund Solutions", "description": "Access to a range of hedge fund strategies designed to deliver consistent, risk-adjusted returns.", "link": "strategies.html#hedge-fund-solutions" },
+  { "icon": "building", "title": "Real Estate", "description": "Investing in high-quality assets that generate stable income and long-term capital appreciation.", "link": "strategies.html#real-estate" },
+  { "icon": "shield", "title": "Credit & Insurance", "description": "Delivering attractive yield opportunities through private credit and insurance solutions.", "link": "strategies.html#credit-insurance" }
+]
