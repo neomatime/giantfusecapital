@@ -55,3 +55,13 @@
 .grid-4 { display: grid; grid-template-columns: 1fr; gap: var(--space-24); }
 @media (min-width: 641px) { .grid-4 { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1025px) { .grid-4 { grid-template-columns: repeat(4, 1fr); } }
+
+.icon-badge-outline { background: transparent; color: var(--color-teal); border: 1.5px solid var(--color-teal); }
+.stat-tile { text-align: center; display: flex; flex-direction: column; align-items: center; }
+.stat-tile .stat-value { font-family: 'Fraunces', serif; font-size: 2rem; color: var(--color-navy); margin-top: var(--space-16); }
+.stat-tile .stat-label { font-size: 0.85rem; color: var(--color-slate); margin-top: var(--space-4); }
+.stats-disclaimer { text-align: center; font-size: 0.8rem; color: var(--color-slate); opacity: 0.75; margin-top: var(--space-32); }
+
+.grid-5 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-24); }
+@media (min-width: 641px) { .grid-5 { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1025px) { .grid-5 { grid-template-columns: repeat(5, 1fr); } }

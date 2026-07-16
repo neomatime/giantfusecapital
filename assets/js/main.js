@@ -55,6 +55,30 @@
     });
   }
 
+  async function renderStatistics() {
+    const container = document.querySelector('#stats-grid');
+    if (!container) return;
+    const [template, response] = await Promise.all([
+      loadCardTemplate('stat-card'),
+      fetch('data/statistics.json'),
+    ]);
+    const items = await response.json();
+    renderCards(template, items, container, (node, item) => {
+      node.querySelector('[data-field="icon"]').innerHTML = ICONS[item.icon] || '';
+      const valueEl = node.querySelector('[data-field="value"]');
+      if (item.numeric) {
+        valueEl.textContent = '0';
+        valueEl.setAttribute('data-count-target', item.value);
+      } else {
+        valueEl.textContent = item.value;
+      }
+      node.querySelector('[data-field="label"]').textContent = item.label;
+    });
+    if (window.Giantfuse && window.Giantfuse.Counters) {
+      window.Giantfuse.Counters.init('#stats-grid [data-count-target]');
+    }
+  }
+
   async function init() {
     await Promise.all([
       includeStatic('navbar', '[data-include="navbar"]'),
@@ -62,6 +86,7 @@
     ]);
     if (window.Giantfuse && window.Giantfuse.Nav) window.Giantfuse.Nav.init();
     await renderStrategies();
+    await renderStatistics();
   }
 
   if (typeof document !== 'undefined') {

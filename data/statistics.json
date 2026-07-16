@@ -1,0 +1,7 @@
+[
+  { "icon": "growth", "value": "26.9%", "numeric": true, "label": "3-Year Average NAV Return" },
+  { "icon": "trend", "value": "50.1%", "numeric": true, "label": "3-Year Annualised NAV Return" },
+  { "icon": "pie", "value": "10.1%", "numeric": true, "label": "Average Dividend Yield" },
+  { "icon": "shield", "value": "Disciplined", "numeric": false, "label": "Risk Management Framework" },
+  { "icon": "people", "value": "Institutional Grade", "numeric": false, "label": "Governance & Transparency" }
+]
