@@ -11,12 +11,52 @@
     building: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18"/><line x1="9" y1="7" x2="9" y2="7.01"/><line x1="12" y1="7" x2="12" y2="7.01"/><line x1="15" y1="7" x2="15" y2="7.01"/><line x1="9" y1="11" x2="9" y2="11.01"/><line x1="12" y1="11" x2="12" y2="11.01"/><line x1="15" y1="11" x2="15" y2="11.01"/><line x1="9" y1="15" x2="9" y2="15.01"/><line x1="12" y1="15" x2="12" y2="15.01"/><line x1="15" y1="15" x2="15" y2="15.01"/></svg>'
   };
 
+  async function fetchInclude(name) {
+    const response = await fetch(`components/${name}.html`);
+    if (!response.ok) throw new Error(`Failed to load component: ${name}`);
+    return response.text();
+  }
+
+  async function includeStatic(name, targetSelector) {
+    const target = document.querySelector(targetSelector);
+    if (!target) return;
+    target.innerHTML = await fetchInclude(name);
+  }
+
+  async function loadCardTemplate(name) {
+    const html = await fetchInclude(name);
+    const wrapper = document.createElement('div');
+    wrapper.innerHTML = html;
+    return wrapper.querySelector('template');
+  }
+
+  function renderCards(template, items, container, fill) {
+    if (!template || !container) return;
+    items.forEach((item) => {
+      const node = template.content.cloneNode(true);
+      fill(node, item);
+      container.appendChild(node);
+    });
+  }
+
+  async function init() {
+    await Promise.all([
+      includeStatic('navbar', '[data-include="navbar"]'),
+      includeStatic('footer', '[data-include="footer"]'),
+    ]);
+    if (window.Giantfuse && window.Giantfuse.Nav) window.Giantfuse.Nav.init();
+  }
+
+  if (typeof document !== 'undefined') {
+    document.addEventListener('DOMContentLoaded', init);
+  }
+
   if (typeof window !== 'undefined') {
     window.Giantfuse = window.Giantfuse || {};
     window.Giantfuse.Icons = ICONS;
   }
 
   if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { ICONS };
+    module.exports = { ICONS, fetchInclude, includeStatic, loadCardTemplate, renderCards };
   }
 })();
