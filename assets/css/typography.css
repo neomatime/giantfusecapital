@@ -1,0 +1,31 @@
+h1, h2, h3, h4 {
+  font-family: 'Fraunces', serif;
+  color: var(--color-navy);
+  line-height: 1.15;
+  margin: 0;
+  font-weight: 500;
+}
+body, p, a, li, button, input, textarea, span {
+  font-family: 'Inter', sans-serif;
+}
+h1 { font-size: clamp(2.25rem, 4vw, 3.5rem); }
+h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.125rem; font-weight: 600; }
+p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-slate);
+  margin: 0;
+}
+.eyebrow {
+  display: inline-block;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-teal);
+  font-weight: 600;
+}
+.section-heading { text-align: center; margin-bottom: var(--space-48); }
+.section-heading h2 { margin-bottom: var(--space-8); }
+.section-heading p { color: var(--color-slate); }
