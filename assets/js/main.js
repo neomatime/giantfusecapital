@@ -79,6 +79,22 @@
     }
   }
 
+  async function renderInsights() {
+    const container = document.querySelector('#insights-grid');
+    const template = document.querySelector('#insight-card-template');
+    if (!container || !template) return;
+    const response = await fetch('data/insights.json');
+    const items = await response.json();
+    renderCards(template, items.slice(0, 3), container, (node, item) => {
+      node.querySelector('[data-field="category"]').textContent = item.category;
+      node.querySelector('[data-field="title"]').textContent = item.title;
+      const date = new Date(item.date);
+      const formattedDate = date.toLocaleDateString('en-ZA', { month: 'long', day: 'numeric', year: 'numeric' });
+      node.querySelector('[data-field="meta"]').textContent = `${formattedDate} • ${item.readTime}`;
+      node.querySelector('[data-field="link"]').setAttribute('href', item.link);
+    });
+  }
+
   async function init() {
     await Promise.all([
       includeStatic('navbar', '[data-include="navbar"]'),
@@ -87,6 +103,7 @@
     if (window.Giantfuse && window.Giantfuse.Nav) window.Giantfuse.Nav.init();
     await renderStrategies();
     await renderStatistics();
+    await renderInsights();
   }
 
   if (typeof document !== 'undefined') {

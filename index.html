@@ -38,6 +38,27 @@
         <p class="stats-disclaimer">Performance metrics are based on composite returns across strategies. Past performance is not indicative of future results.</p>
       </div>
     </section>
+
+    <section class="section" data-reveal>
+      <div class="container">
+        <div class="section-heading-row">
+          <h2>Insights That <span class="text-teal">Matter</span></h2>
+          <a href="insights.html" class="card-link">View All Insights &rarr;</a>
+        </div>
+        <div class="grid-3" id="insights-grid"></div>
+      </div>
+      <template id="insight-card-template">
+        <div class="card insight-card" data-reveal>
+          <div class="card-media">Photo: insight-thumbnail</div>
+          <div class="card-body">
+            <span class="eyebrow" data-field="category"></span>
+            <h3 data-field="title"></h3>
+            <div class="meta" data-field="meta"></div>
+            <a href="#" class="card-link" data-field="link">Read More &rarr;</a>
+          </div>
+        </div>
+      </template>
+    </section>
   </main>
 
   <div data-include="footer"></div>
