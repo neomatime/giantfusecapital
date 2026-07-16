@@ -11,7 +11,7 @@
 ## Global Constraints
 
 - No build tool, bundler, or framework — plain HTML/CSS/JS only (spec non-goal).
-- No real photography yet — every photo-dependent area gets a clearly labeled placeholder (e.g. "Photo: hero-building") the user can swap in later (spec decision: "You supply the photos").
+- Real photography has arrived for 5 categories, one file each: `assets/images/hero/pexels-willianjusten-35568066.jpg`, `assets/images/office/pexels-startup-stock-photos-7070.jpg`, `assets/images/architecture/pexels-vladimirsrajber-17555545.jpg`, `assets/images/strategies/pexels-constanze-marie-3872134-17879690.jpg`, `assets/images/insights/pexels-justamaki-16473129.jpg`. Per user decision ("Single-use only"): the hero photo goes in the hero section and the office photo goes in the CTA band — the only two single-instance photo slots on Home. The architecture/strategies/insights photos are held back (not used this round) because Home's repeating grids need 4 distinct strategy-card images and 3 distinct insight-card images, and only one photo per category exists — those cards keep the gradient-placeholder treatment (e.g. "Photo: strategy-background") until more photography is supplied.
 - Content is data-driven from JSON for strategies, statistics, and insights (spec decision: "Data-driven JSON").
 - Component reuse via runtime `fetch`-include, not a build-time step (spec decision: "JS fetch-include").
 - Leadership is included as a primary nav item even though the mockup omits it (spec decision).
@@ -1133,18 +1133,12 @@ git commit -m "feat: render insight teaser cards"
 .hero h1 { margin-bottom: var(--space-16); }
 .hero p { max-width: 480px; margin-bottom: var(--space-24); }
 .hero-actions { display: flex; flex-wrap: wrap; gap: var(--space-16); }
-.hero-media-placeholder {
+.hero-media {
   aspect-ratio: 4 / 5;
   border-radius: var(--radius-md);
-  background: linear-gradient(160deg, var(--color-sea-glass), var(--color-navy));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-white);
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  overflow: hidden;
 }
+.hero-media img { width: 100%; height: 100%; object-fit: cover; }
 
 .value-strip { background: var(--color-navy); color: var(--color-white); padding: var(--space-32) 0; }
 .value-strip-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-24); text-align: center; }
@@ -1168,7 +1162,9 @@ Insert immediately after `<div data-include="navbar"></div>` and before `<main>`
         <a href="contact.html" class="btn btn-outline">Contact Us</a>
       </div>
     </div>
-    <div class="hero-media-placeholder">Photo: hero-building</div>
+    <div class="hero-media">
+      <img src="assets/images/hero/pexels-willianjusten-35568066.jpg" alt="Modern glass office tower, viewed from below" width="640" height="800" loading="eager">
+    </div>
   </section>
 
   <section class="value-strip" data-reveal>
@@ -1195,7 +1191,7 @@ Insert immediately after `<div data-include="navbar"></div>` and before `<main>`
 
 - [ ] **Step 3: Verify in browser**
 
-Reload the page. Expected: hero heading "The Age of Possibilities" with "Possibilities" in teal, both CTA buttons visible, hero placeholder box labeled "Photo: hero-building" to the right (desktop) or below (mobile). Dark value strip with 4 icon+label pairs beneath the hero. Check at 375px and 1280px widths via `computer {action: "screenshot"}`.
+Reload the page. Expected: hero heading "The Age of Possibilities" with "Possibilities" in teal, both CTA buttons visible, the real hero photo displayed to the right (desktop) or below (mobile), cropped to fill its frame without distortion. Dark value strip with 4 icon+label pairs beneath the hero. Check at 375px and 1280px widths via `computer {action: "screenshot"}`.
 
 - [ ] **Step 4: Commit**
 
@@ -1216,7 +1212,9 @@ git commit -m "feat: build hero and value-strip sections"
 
 ```css
 .cta-band {
-  background: linear-gradient(rgba(13, 27, 42, 0.8), rgba(13, 27, 42, 0.88)), linear-gradient(135deg, var(--color-navy), var(--color-slate));
+  background:
+    linear-gradient(rgba(13, 27, 42, 0.82), rgba(13, 27, 42, 0.9)),
+    url('../../images/office/pexels-startup-stock-photos-7070.jpg') center / cover no-repeat;
   color: var(--color-white);
   padding: var(--space-64) 0;
 }
@@ -1372,7 +1370,7 @@ git commit -m "feat: add scroll-reveal animation and complete Home page"
 
 ## Self-review notes
 
-- **Spec coverage:** every section listed in the spec's "Home page sections" is implemented in Tasks 7, 8, 9, 10, 11, 12 (navbar/footer, strategies, stats, insights, hero/value-strip, CTA bands). Design tokens (Task 2), typography (Task 3), icons (Task 4), include mechanism (Task 7), and scroll reveal (Task 13) all map to spec sections. Image placeholders (spec decision) appear in Tasks 8, 10, 11. Leadership-in-nav and font-pairing decisions are in Task 5 and Task 3 respectively. Footer legal links point to `#` per spec, in Task 6.
+- **Spec coverage:** every section listed in the spec's "Home page sections" is implemented in Tasks 7, 8, 9, 10, 11, 12 (navbar/footer, strategies, stats, insights, hero/value-strip, CTA bands). Design tokens (Task 2), typography (Task 3), icons (Task 4), include mechanism (Task 7), and scroll reveal (Task 13) all map to spec sections. Image placeholders (spec decision, refined once real photos arrived) appear in Tasks 8 and 10; Task 11 and Task 12 use the real hero and office photos per the "Single-use only" mapping decision. Leadership-in-nav and font-pairing decisions are in Task 5 and Task 3 respectively. Footer legal links point to `#` per spec, in Task 6.
 - **Placeholder scan:** no TBD/TODO — every step has runnable code and an exact expected result.
 - **Type/name consistency:** `data-field` attribute names (`icon`, `title`, `description`, `link`, `value`, `label`, `category`, `meta`) are used identically between each `<template>` and its corresponding `render*` function. `window.Giantfuse.*` namespace keys (`Icons`, `Nav`, `Counters`, `ScrollEffects`) are consistent across every file that produces or consumes them.
 - **Scope:** limited to foundation + Home, matching the approved spec's non-goals. Other pages are explicitly out of scope (see Global Constraints).
