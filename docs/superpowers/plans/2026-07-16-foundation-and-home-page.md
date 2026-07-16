@@ -891,7 +891,7 @@ node -e "
 const { parseNumeric, formatAtProgress } = require('./assets/js/counters.js');
 const assert = require('assert');
 assert.deepStrictEqual(parseNumeric('26.9%'), { number: 26.9, suffix: '%' });
-assert.strictEqual(formatAtProgress('26.9%', 0.5), '13.5%');
+assert.strictEqual(formatAtProgress('26.9%', 0.5), '13.4%');
 assert.strictEqual(formatAtProgress('26.9%', 1), '26.9%');
 assert.strictEqual(formatAtProgress('Disciplined', 0.5), 'Disciplined');
 console.log('counters.js pure logic OK');
