@@ -4,8 +4,7 @@
   left: 0;
   right: 0;
   z-index: 50;
-  background: rgba(248, 250, 252, 0.95);
-  backdrop-filter: blur(6px);
+  background: var(--color-off-white);
   border-bottom: 1px solid var(--color-light-gray);
   transition: box-shadow 0.2s ease;
 }
