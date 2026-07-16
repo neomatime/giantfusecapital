@@ -104,6 +104,9 @@
     await renderStrategies();
     await renderStatistics();
     await renderInsights();
+    if (window.Giantfuse && window.Giantfuse.ScrollEffects) {
+      window.Giantfuse.ScrollEffects.init();
+    }
   }
 
   if (typeof document !== 'undefined') {
