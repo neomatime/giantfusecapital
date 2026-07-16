@@ -24,3 +24,25 @@
 .value-item { display: flex; flex-direction: column; align-items: center; gap: var(--space-8); }
 .value-item svg { width: 28px; height: 28px; color: var(--color-teal); }
 .value-item span { font-size: 0.85rem; }
+
+.cta-band {
+  background:
+    linear-gradient(rgba(13, 27, 42, 0.82), rgba(13, 27, 42, 0.9)),
+    url('../../images/office/pexels-startup-stock-photos-7070.jpg') center / cover no-repeat;
+  color: var(--color-white);
+  padding: var(--space-64) 0;
+}
+.cta-band p { color: var(--color-light-gray); max-width: 480px; margin: var(--space-16) 0 var(--space-24); }
+.cta-band h2 { color: var(--color-white); }
+
+.closing-cta { padding: var(--space-48) 0; }
+.closing-cta-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  align-items: flex-start;
+}
+@media (min-width: 1025px) {
+  .closing-cta-inner { flex-direction: row; align-items: center; justify-content: space-between; }
+}
+.closing-cta-mark { font-size: 2rem; color: var(--color-teal); }
