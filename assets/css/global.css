@@ -23,7 +23,7 @@
   --radius-md: 8px;
   --radius-full: 999px;
 
-  --navbar-height: 68px;
+  --navbar-height: 125px;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
