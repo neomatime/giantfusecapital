@@ -23,6 +23,20 @@
     target.innerHTML = await fetchInclude(name);
   }
 
+  function syncNavbarHeight() {
+    const navbar = document.querySelector('.navbar');
+    if (!navbar) return;
+    const applyHeight = () => {
+      document.documentElement.style.setProperty('--navbar-height', `${navbar.getBoundingClientRect().height}px`);
+    };
+    applyHeight();
+    if (typeof ResizeObserver !== 'undefined') {
+      new ResizeObserver(applyHeight).observe(navbar);
+    } else {
+      window.addEventListener('resize', applyHeight);
+    }
+  }
+
   async function loadCardTemplate(name) {
     const html = await fetchInclude(name);
     const wrapper = document.createElement('div');
@@ -103,6 +117,7 @@
       includeStatic('navbar', '[data-include="navbar"]'),
       includeStatic('footer', '[data-include="footer"]'),
     ]);
+    syncNavbarHeight();
     if (window.Giantfuse && window.Giantfuse.Nav) window.Giantfuse.Nav.init();
     try {
       await renderStrategies();
