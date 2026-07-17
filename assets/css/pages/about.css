@@ -107,3 +107,15 @@
 }
 .office-card h4 { margin-bottom: var(--space-8); }
 .office-card p { font-size: 0.9rem; }
+
+.closing-cta { padding: var(--space-48) 0; }
+.closing-cta-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  align-items: flex-start;
+}
+@media (min-width: 1025px) {
+  .closing-cta-inner { flex-direction: row; align-items: center; justify-content: space-between; }
+}
+.closing-cta-mark { font-size: 2rem; color: var(--color-teal); }
