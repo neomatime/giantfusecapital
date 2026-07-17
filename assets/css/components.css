@@ -74,3 +74,8 @@
 
 .section-heading-row { display: flex; justify-content: space-between; align-items: baseline; text-align: left; margin-bottom: var(--space-48); }
 .section-heading-row h2 { margin-bottom: 0; }
+
+.checklist { display: flex; flex-direction: column; gap: var(--space-16); margin-top: var(--space-24); }
+.checklist li { display: flex; align-items: center; gap: var(--space-12); font-weight: 600; color: var(--color-navy); }
+.checklist .icon-badge { width: 28px; height: 28px; }
+.checklist .icon-badge svg { width: 16px; height: 16px; }
