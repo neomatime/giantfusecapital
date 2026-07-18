@@ -234,8 +234,27 @@
             </div>
           </div>
 
-          <!-- TASK 6: Phase 3 + success panel -->
+          <div class="enquiry-phase" data-phase="3" id="enquiry-phase-3">
+            <div class="phase-card">
+              <h3>Review Your Enquiry</h3>
+              <p class="phase-intro">Please confirm your details before submitting.</p>
+
+              <div class="enquiry-review" id="enquiry-review"></div>
+
+              <div class="phase-actions has-back">
+                <button type="button" class="btn btn-outline" data-action="back">&larr; Back</button>
+                <button type="submit" class="btn btn-solid">Submit Enquiry &rarr;</button>
+              </div>
+            </div>
+          </div>
         </form>
+
+        <div class="enquiry-success" id="enquiry-success" hidden>
+          <div class="icon-badge enquiry-success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4,13 9,18 20,6"/></svg></div>
+          <h3>Thank you &mdash; your enquiry has been received.</h3>
+          <p>A member of our team will be in touch within 1 business day.</p>
+          <button type="button" class="btn btn-outline" data-action="reset">Submit another enquiry</button>
+        </div>
       </div>
     </section>
   </main>
