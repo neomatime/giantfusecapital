@@ -1,1 +1,11 @@
 /* Leadership page styles — populated in Task 3 and Task 4 */
+
+.platform-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-32) var(--space-16); }
+@media (min-width: 641px) { .platform-stats { grid-template-columns: repeat(4, 1fr); } }
+.platform-stat { text-align: center; padding: 0 var(--space-16); border-left: 1px solid var(--color-light-gray); }
+.platform-stat:first-child { border-left: none; }
+@media (max-width: 640px) { .platform-stat { border-left: none; } }
+.platform-stat .icon-badge { margin: 0 auto var(--space-12); width: 44px; height: 44px; }
+.platform-stat .icon-badge svg { width: 22px; height: 22px; }
+.platform-stat strong { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; color: var(--color-navy); margin-bottom: var(--space-4); }
+.platform-stat span { font-size: 0.8rem; color: var(--color-slate); }
