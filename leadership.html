@@ -88,7 +88,27 @@
       </div>
     </section>
 
-    <!-- TASK 4: Investment Committee section -->
+    <section class="section" id="investment-committee" data-reveal>
+      <div class="container">
+        <div class="section-heading">
+          <h2>Investment <span class="text-teal">Committee</span></h2>
+          <p>The Investment Committee provides oversight and guidance on all investment activities, ensuring disciplined decision-making and strong governance.</p>
+        </div>
+        <div class="grid-4" id="committee-grid"></div>
+      </div>
+      <template id="committee-member-template">
+        <div class="committee-member" data-reveal>
+          <div class="committee-member-header">
+            <div class="committee-avatar"><span data-field="initials"></span></div>
+            <div>
+              <h4 data-field="name"></h4>
+              <p class="leader-title" data-field="title"></p>
+            </div>
+          </div>
+          <p data-field="bio"></p>
+        </div>
+      </template>
+    </section>
 
     <section class="closing-cta" data-reveal>
       <div class="container closing-cta-inner">

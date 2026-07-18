@@ -38,3 +38,36 @@
   border: 1.5px solid var(--color-teal);
   margin-top: var(--space-8);
 }
+
+#investment-committee {
+  scroll-margin-top: calc(var(--navbar-height) + var(--space-16));
+}
+
+.committee-member-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  margin-bottom: var(--space-12);
+}
+
+.committee-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--color-sea-glass), var(--color-steel-teal));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.committee-avatar span {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-white);
+}
+
+.committee-member h4 { margin-bottom: var(--space-4); }
+.committee-member .leader-title { margin-bottom: 0; }
+.committee-member p { font-size: 0.85rem; }
