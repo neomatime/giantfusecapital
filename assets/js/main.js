@@ -149,6 +149,34 @@
     });
   }
 
+  async function renderLeadership() {
+    const teamContainer = document.querySelector('#leader-grid');
+    const teamTemplate = document.querySelector('#leader-card-template');
+    const committeeContainer = document.querySelector('#committee-grid');
+    const committeeTemplate = document.querySelector('#committee-member-template');
+    if (!teamContainer && !committeeContainer) return;
+    const response = await fetch('data/leadership.json');
+    if (!response.ok) throw new Error('Failed to load data: data/leadership.json');
+    const data = await response.json();
+    if (teamContainer && teamTemplate) {
+      renderCards(teamTemplate, data.team, teamContainer, (node, item) => {
+        node.querySelector('[data-field="initials"]').textContent = item.initials;
+        node.querySelector('[data-field="name"]').textContent = item.name;
+        node.querySelector('[data-field="title"]').textContent = item.title;
+        node.querySelector('[data-field="bio"]').textContent = item.bio;
+        node.querySelector('[data-field="linkedin"]').setAttribute('href', item.linkedin);
+      });
+    }
+    if (committeeContainer && committeeTemplate) {
+      renderCards(committeeTemplate, data.committee, committeeContainer, (node, item) => {
+        node.querySelector('[data-field="initials"]').textContent = item.initials;
+        node.querySelector('[data-field="name"]').textContent = item.name;
+        node.querySelector('[data-field="title"]').textContent = item.title;
+        node.querySelector('[data-field="bio"]').textContent = item.bio;
+      });
+    }
+  }
+
   function scrollToHash() {
     if (typeof window === 'undefined' || !window.location.hash) return;
     const target = document.getElementById(window.location.hash.slice(1));
@@ -169,6 +197,7 @@
       await renderStatistics();
       await renderInsights();
       await renderStrategyDetails();
+      await renderLeadership();
     } catch (error) {
       console.error('Failed to render dynamic content:', error);
     } finally {

@@ -33,7 +33,29 @@
   </section>
 
   <main>
-    <!-- TASK 3: Leadership Team section -->
+    <section class="section" data-reveal>
+      <div class="container">
+        <div class="section-heading-row">
+          <div>
+            <h2>Our <span class="text-teal">Leadership</span> Team</h2>
+            <p>A hands-on leadership team with a proven track record across private markets and alternative investments.</p>
+          </div>
+          <a href="#investment-committee" class="btn btn-outline">View Investment Committee &rarr;</a>
+        </div>
+        <div class="grid-4" id="leader-grid"></div>
+      </div>
+      <template id="leader-card-template">
+        <div class="card leader-card" data-reveal>
+          <div class="card-media avatar-placeholder"><span data-field="initials"></span></div>
+          <div class="card-body">
+            <h3 data-field="name"></h3>
+            <p class="leader-title" data-field="title"></p>
+            <p data-field="bio"></p>
+            <a href="#" class="card-link leader-linkedin" data-field="linkedin" aria-label="LinkedIn profile">in</a>
+          </div>
+        </div>
+      </template>
+    </section>
 
     <section class="section" data-reveal>
       <div class="container">

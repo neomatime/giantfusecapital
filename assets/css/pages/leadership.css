@@ -9,3 +9,32 @@
 .platform-stat .icon-badge svg { width: 22px; height: 22px; }
 .platform-stat strong { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; color: var(--color-navy); margin-bottom: var(--space-4); }
 .platform-stat span { font-size: 0.8rem; color: var(--color-slate); }
+
+.section-heading-row > div:first-child p { margin-top: var(--space-8); max-width: 520px; }
+
+.avatar-placeholder span {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 2.5rem;
+  color: var(--color-white);
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.leader-title {
+  font-size: 0.85rem;
+  color: var(--color-teal);
+  font-weight: 600;
+  margin-bottom: var(--space-12);
+}
+
+.leader-card .leader-linkedin {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--color-teal);
+  margin-top: var(--space-8);
+}
