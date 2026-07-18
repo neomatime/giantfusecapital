@@ -149,6 +149,12 @@
     });
   }
 
+  function scrollToHash() {
+    if (typeof window === 'undefined' || !window.location.hash) return;
+    const target = document.querySelector(window.location.hash);
+    if (target) target.scrollIntoView();
+  }
+
   async function init() {
     await Promise.all([
       includeStatic('navbar', '[data-include="navbar"]'),
@@ -167,6 +173,7 @@
       if (window.Giantfuse && window.Giantfuse.ScrollEffects) {
         window.Giantfuse.ScrollEffects.init();
       }
+      scrollToHash();
     }
   }
 
