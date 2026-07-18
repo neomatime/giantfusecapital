@@ -66,7 +66,88 @@
       </div>
     </section>
 
-    <!-- TASK 4: Investor Enquiry wizard -->
+    <section class="section" data-reveal>
+      <div class="container">
+        <div class="section-heading">
+          <h2>Investor <span class="text-teal">Enquiry</span></h2>
+          <p>To ensure we connect you with the right information and team, please complete our two-step enquiry process.</p>
+        </div>
+
+        <ol class="enquiry-steps" id="enquiry-steps">
+          <li class="enquiry-step is-active" data-step="1">
+            <button type="button" class="enquiry-step-marker" disabled><span class="enquiry-step-number">1</span></button>
+            <div>
+              <strong>Your Enquiry</strong>
+              <span>Tell us what you are looking for</span>
+            </div>
+          </li>
+          <li class="enquiry-step" data-step="2">
+            <button type="button" class="enquiry-step-marker" disabled><span class="enquiry-step-number">2</span></button>
+            <div>
+              <strong>Contact Details</strong>
+              <span>Share your details so we can reach you</span>
+            </div>
+          </li>
+          <li class="enquiry-step" data-step="3">
+            <button type="button" class="enquiry-step-marker" disabled><span class="enquiry-step-number">3</span></button>
+            <div>
+              <strong>Review &amp; Submit</strong>
+              <span>We'll be in touch shortly</span>
+            </div>
+          </li>
+        </ol>
+
+        <form id="enquiry-form" novalidate>
+          <div class="enquiry-phase is-active" data-phase="1" id="enquiry-phase-1">
+            <div class="phase-card">
+              <span class="phase-badge">Phase 1 of 2</span>
+              <h3>What are you enquiring about?</h3>
+              <p class="phase-intro">This helps us route your enquiry to the right team.</p>
+
+              <div class="field-group">
+                <label class="field-label">Which best describes you?</label>
+                <div class="persona-grid" id="persona-grid"></div>
+                <p class="field-error" data-error-for="persona" hidden>Please select one option.</p>
+              </div>
+
+              <div class="field-group">
+                <label class="field-label">What type of solution are you interested in?</label>
+                <p class="field-hint">Select all that apply.</p>
+                <div class="solution-checklist" id="solution-checklist"></div>
+                <p class="field-error" data-error-for="solutions" hidden>Please select at least one option.</p>
+              </div>
+
+              <div class="field-group">
+                <label class="field-label" for="purpose">What is the purpose of your enquiry?</label>
+                <select id="purpose" name="purpose" required>
+                  <option value="" selected disabled>Please select...</option>
+                  <option value="investment-opportunity">Investment Opportunity</option>
+                  <option value="partnership">Partnership Enquiry</option>
+                  <option value="media-press">Media &amp; Press</option>
+                  <option value="careers">Careers</option>
+                  <option value="general-question">General Question</option>
+                  <option value="other">Other</option>
+                </select>
+                <p class="field-error" data-error-for="purpose" hidden>Please select the purpose of your enquiry.</p>
+              </div>
+
+              <div class="field-group">
+                <label class="field-label" for="enquiry-notes">Tell us more about your enquiry (optional)</label>
+                <textarea id="enquiry-notes" name="enquiryNotes" rows="4" placeholder="Provide any additional detail that will help us understand how we can assist."></textarea>
+              </div>
+
+              <div class="phase-actions">
+                <button type="button" class="btn btn-solid" data-action="next">Next: Contact Details &rarr;</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- TASK 5: Phase 2 -->
+
+          <!-- TASK 6: Phase 3 + success panel -->
+        </form>
+      </div>
+    </section>
   </main>
 
   <div data-include="footer"></div>
