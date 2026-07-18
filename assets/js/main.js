@@ -196,6 +196,7 @@
     ]);
     syncNavbarHeight();
     if (window.Giantfuse && window.Giantfuse.Nav) window.Giantfuse.Nav.init();
+    if (window.Giantfuse && window.Giantfuse.ContactForm) window.Giantfuse.ContactForm.init();
     try {
       await renderStrategies();
       await renderStatistics();
