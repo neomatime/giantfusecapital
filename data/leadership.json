@@ -1,0 +1,58 @@
+{
+  "team": [
+    {
+      "name": "Tebogo Mkhize",
+      "title": "Chief Executive Officer",
+      "bio": "Over 20 years of experience in private equity and investment management. Previously held senior roles at leading investment firms in South Africa.",
+      "initials": "TM",
+      "linkedin": "#"
+    },
+    {
+      "name": "Michael van der Merwe",
+      "title": "Chief Investment Officer",
+      "bio": "25+ years' experience in portfolio management, alternative investments and capital allocation across global markets.",
+      "initials": "MM",
+      "linkedin": "#"
+    },
+    {
+      "name": "Nolitha Dlamini",
+      "title": "Head: Real Assets",
+      "bio": "Specialist in real estate and infrastructure investments with extensive experience in asset acquisition and development.",
+      "initials": "ND",
+      "linkedin": "#"
+    },
+    {
+      "name": "David Rossouw",
+      "title": "Head: Credit & Insurance",
+      "bio": "Expert in private credit and insurance investments with a focus on risk management and capital preservation.",
+      "initials": "DR",
+      "linkedin": "#"
+    }
+  ],
+  "committee": [
+    {
+      "name": "John Mayers",
+      "title": "Chairman",
+      "bio": "Former CEO with extensive experience in financial services and governance.",
+      "initials": "JM"
+    },
+    {
+      "name": "Karen Combrinck",
+      "title": "Independent Member",
+      "bio": "Corporate governance specialist and former non-executive director.",
+      "initials": "KC"
+    },
+    {
+      "name": "Sipho Maseko",
+      "title": "Independent Member",
+      "bio": "Expert in risk management and financial regulation with 30+ years' experience.",
+      "initials": "SM"
+    },
+    {
+      "name": "James Patel",
+      "title": "Independent Member",
+      "bio": "Investment banking veteran with deep expertise in capital markets.",
+      "initials": "JP"
+    }
+  ]
+}

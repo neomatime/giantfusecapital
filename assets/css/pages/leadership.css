@@ -1,0 +1,76 @@
+/* Leadership page styles — populated in Task 3 and Task 4 */
+
+.platform-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-32) var(--space-16); }
+@media (min-width: 641px) { .platform-stats { grid-template-columns: repeat(4, 1fr); } }
+.platform-stat { text-align: center; padding: 0 var(--space-16); border-left: 1px solid var(--color-light-gray); }
+.platform-stat:first-child { border-left: none; }
+@media (max-width: 640px) { .platform-stat { border-left: none; } }
+.platform-stat .icon-badge { margin: 0 auto var(--space-12); width: 44px; height: 44px; }
+.platform-stat .icon-badge svg { width: 22px; height: 22px; }
+.platform-stat strong { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; color: var(--color-navy); margin-bottom: var(--space-4); }
+.platform-stat span { font-size: 0.8rem; color: var(--color-slate); }
+
+.section-heading-row > div:first-child p { margin-top: var(--space-8); max-width: 520px; }
+
+.avatar-placeholder span {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 2.5rem;
+  color: var(--color-white);
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.leader-title {
+  color: var(--color-teal);
+  font-weight: 600;
+}
+
+.leader-card .leader-title {
+  font-size: 0.85rem;
+  margin-bottom: var(--space-12);
+}
+
+.leader-card .leader-linkedin {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--color-teal);
+  margin-top: var(--space-8);
+}
+
+#investment-committee {
+  scroll-margin-top: calc(var(--navbar-height) + var(--space-16));
+}
+
+.committee-member-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  margin-bottom: var(--space-12);
+}
+
+.committee-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--color-sea-glass), var(--color-steel-teal));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.committee-avatar span {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-white);
+}
+
+.committee-member h3 { font-size: 1.125rem; font-weight: 600; margin-bottom: var(--space-4); }
+.committee-member .leader-title { margin-bottom: 0; }
+.committee-member p { font-size: 0.85rem; }

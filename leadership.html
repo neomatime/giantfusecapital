@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leadership | Giantfuse Capital Partners</title>
+  <link rel="icon" type="image/png" href="assets/images/icons/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Lato:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/typography.css">
+  <link rel="stylesheet" href="assets/css/navigation.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animationa.css">
+  <link rel="stylesheet" href="assets/css/shared-sections.css">
+  <link rel="stylesheet" href="assets/css/pages/leadership.css">
+</head>
+<body>
+  <div data-include="navbar"></div>
+
+  <section class="hero hero-banner" data-reveal>
+    <div class="hero-media">
+      <img src="assets/images/pexels-teyi-528835508-17351599.jpg" alt="Glass office towers converging upward against a cloudy sky" loading="eager">
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-copy">
+      <span class="eyebrow">Leadership</span>
+      <h1>Experience. Expertise. <span class="text-teal">Alignment.</span></h1>
+      <p>Our leadership team brings together decades of investment experience, deep sector knowledge and a shared commitment to delivering long-term value for our investors.</p>
+    </div>
+  </section>
+
+  <main>
+    <section class="section" data-reveal>
+      <div class="container">
+        <div class="section-heading-row">
+          <div>
+            <h2>Our <span class="text-teal">Leadership</span> Team</h2>
+            <p>A hands-on leadership team with a proven track record across private markets and alternative investments.</p>
+          </div>
+          <a href="#investment-committee" class="btn btn-outline">View Investment Committee &rarr;</a>
+        </div>
+        <div class="grid-4" id="leader-grid"></div>
+      </div>
+      <template id="leader-card-template">
+        <div class="card leader-card" data-reveal>
+          <div class="card-media avatar-placeholder"><span data-field="initials"></span></div>
+          <div class="card-body">
+            <h3 data-field="name"></h3>
+            <p class="leader-title" data-field="title"></p>
+            <p data-field="bio"></p>
+            <a href="#" class="card-link leader-linkedin" data-field="linkedin" aria-label="LinkedIn profile">in</a>
+          </div>
+        </div>
+      </template>
+    </section>
+
+    <section class="section" data-reveal>
+      <div class="container">
+        <div class="section-heading">
+          <h2>Leadership Backed by <span class="text-teal">Deep Experience</span></h2>
+          <p>Our team combines investment expertise with strong governance and a culture of accountability to deliver consistent results.</p>
+        </div>
+        <div class="platform-stats">
+          <div class="platform-stat">
+            <div class="icon-badge icon-badge-outline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/><circle cx="17" cy="9" r="2.3"/><path d="M15.8 14.2c2.6.2 4.7 2.1 4.7 4.8"/></svg></div>
+            <strong>80+</strong>
+            <span>Years of Combined Investment Experience</span>
+          </div>
+          <div class="platform-stat">
+            <div class="icon-badge icon-badge-outline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="19" x2="5" y2="13"/><line x1="12" y1="19" x2="12" y2="9"/><line x1="19" y1="19" x2="19" y2="5"/><line x1="3" y1="19" x2="21" y2="19"/></svg></div>
+            <strong>100+</strong>
+            <span>Combined Transactions Executed</span>
+          </div>
+          <div class="platform-stat">
+            <div class="icon-badge icon-badge-outline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg></div>
+            <strong>4</strong>
+            <span>Core Investment Strategies</span>
+          </div>
+          <div class="platform-stat">
+            <div class="icon-badge icon-badge-outline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 L20 6 V11 C20 16 16.5 19.5 12 21 C7.5 19.5 4 16 4 11 V6 Z"/><path d="M8.5 12 L11 14.5 L16 9"/></svg></div>
+            <strong>Aligned</strong>
+            <span>Invested Alongside Our Clients</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="investment-committee" data-reveal>
+      <div class="container">
+        <div class="section-heading">
+          <h2>Investment <span class="text-teal">Committee</span></h2>
+          <p>The Investment Committee provides oversight and guidance on all investment activities, ensuring disciplined decision-making and strong governance.</p>
+        </div>
+        <div class="grid-4" id="committee-grid"></div>
+      </div>
+      <template id="committee-member-template">
+        <div class="committee-member" data-reveal>
+          <div class="committee-member-header">
+            <div class="committee-avatar"><span data-field="initials"></span></div>
+            <div>
+              <h3 data-field="name"></h3>
+              <p class="leader-title" data-field="title"></p>
+            </div>
+          </div>
+          <p data-field="bio"></p>
+        </div>
+      </template>
+    </section>
+
+    <section class="closing-cta" data-reveal>
+      <div class="container closing-cta-inner">
+        <div class="closing-cta-mark">&#9686;</div>
+        <div>
+          <h3>Strong Leadership. Disciplined Approach. <span class="text-teal">Sustainable Outcomes.</span></h3>
+          <p>Our leadership team is committed to disciplined governance and sustainable, long-term outcomes for our investors and partners.</p>
+        </div>
+        <a href="contact.html" class="btn btn-outline">Contact Investor Relations &rarr;</a>
+      </div>
+    </section>
+  </main>
+
+  <div data-include="footer"></div>
+
+  <script src="assets/js/counters.js"></script>
+  <script src="assets/js/scroll-effects.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
