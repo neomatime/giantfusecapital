@@ -754,7 +754,7 @@ Navigate to `contact.html` (refresh if already open). Phase 2 is not visible yet
      requiredFieldIds: [...document.querySelectorAll('#enquiry-phase-2 [required]')].map((el) => el.id)
    })
    ```
-   Expected: `phaseCount` is `2`, `countryOptionCount` is `9`, `prefCheckedDefault` is `"email"`, `requiredFieldIds` is `["full-name","work-email","company","country"]`.
+   Expected: `phaseCount` is `2`, `countryOptionCount` is `10` (9 real country options + the disabled placeholder), `prefCheckedDefault` is `"email"`, `requiredFieldIds` is `["full-name","work-email","company","country"]`.
 
 - [ ] **Step 4: Commit**
 
