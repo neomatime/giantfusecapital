@@ -22,9 +22,12 @@
 }
 
 .leader-title {
-  font-size: 0.85rem;
   color: var(--color-teal);
   font-weight: 600;
+}
+
+.leader-card .leader-title {
+  font-size: 0.85rem;
   margin-bottom: var(--space-12);
 }
 
@@ -68,6 +71,6 @@
   color: var(--color-white);
 }
 
-.committee-member h4 { margin-bottom: var(--space-4); }
+.committee-member h3 { font-size: 1.125rem; font-weight: 600; margin-bottom: var(--space-4); }
 .committee-member .leader-title { margin-bottom: 0; }
 .committee-member p { font-size: 0.85rem; }
