@@ -142,7 +142,97 @@
             </div>
           </div>
 
-          <!-- TASK 5: Phase 2 -->
+          <div class="enquiry-phase" data-phase="2" id="enquiry-phase-2">
+            <div class="phase-card">
+              <span class="phase-badge">Phase 2 of 2</span>
+              <h3>Contact Details</h3>
+              <p class="phase-intro">Please provide your details below so we can respond.</p>
+
+              <div class="field-grid">
+                <div class="field-group">
+                  <label class="field-label" for="full-name">Full Name</label>
+                  <input type="text" id="full-name" name="fullName" placeholder="Enter your full name" required>
+                  <p class="field-error" data-error-for="fullName" hidden>Please enter your full name.</p>
+                </div>
+                <div class="field-group">
+                  <label class="field-label" for="work-email">Work Email</label>
+                  <input type="email" id="work-email" name="workEmail" placeholder="name@company.com" required>
+                  <p class="field-error" data-error-for="workEmail" hidden>Please enter a valid work email.</p>
+                </div>
+                <div class="field-group">
+                  <label class="field-label" for="company">Company / Organisation</label>
+                  <input type="text" id="company" name="company" placeholder="Enter company name" required>
+                  <p class="field-error" data-error-for="company" hidden>Please enter your company or organisation.</p>
+                </div>
+                <div class="field-group">
+                  <label class="field-label" for="job-title">Job Title</label>
+                  <input type="text" id="job-title" name="jobTitle" placeholder="Your job title">
+                </div>
+                <div class="field-group">
+                  <label class="field-label" for="country">Country</label>
+                  <select id="country" name="country" required>
+                    <option value="" selected disabled>Select country...</option>
+                    <option value="za">South Africa</option>
+                    <option value="bw">Botswana</option>
+                    <option value="ke">Kenya</option>
+                    <option value="mu">Mauritius</option>
+                    <option value="ng">Nigeria</option>
+                    <option value="uk">United Kingdom</option>
+                    <option value="us">United States</option>
+                    <option value="ae">United Arab Emirates</option>
+                    <option value="other">Other</option>
+                  </select>
+                  <p class="field-error" data-error-for="country" hidden>Please select your country.</p>
+                </div>
+                <div class="field-group">
+                  <label class="field-label" for="phone">Phone Number</label>
+                  <div class="phone-field">
+                    <span class="phone-prefix">+27</span>
+                    <input type="tel" id="phone" name="phone" placeholder="82 123 4567">
+                  </div>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label class="field-label">How would you prefer to be contacted?</label>
+                <div class="contact-pref-group">
+                  <div class="pref-option">
+                    <input type="radio" id="pref-email" name="contactPreference" value="email" checked>
+                    <label for="pref-email">Email</label>
+                  </div>
+                  <div class="pref-option">
+                    <input type="radio" id="pref-phone" name="contactPreference" value="phone">
+                    <label for="pref-phone">Phone</label>
+                  </div>
+                  <div class="pref-option">
+                    <input type="radio" id="pref-either" name="contactPreference" value="either">
+                    <label for="pref-either">Either</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label class="field-label" for="best-time">Best time to contact you</label>
+                <select id="best-time" name="bestTime">
+                  <option value="" selected>Select time preference...</option>
+                  <option value="morning">Morning (08:00 &ndash; 12:00)</option>
+                  <option value="afternoon">Afternoon (12:00 &ndash; 17:00)</option>
+                  <option value="evening">Evening (after 17:00)</option>
+                  <option value="anytime">Anytime</option>
+                </select>
+              </div>
+
+              <div class="field-group">
+                <label class="field-label" for="additional-info">Any additional information (optional)</label>
+                <textarea id="additional-info" name="additionalInfo" rows="3" placeholder="Add any information that may help us respond better."></textarea>
+              </div>
+
+              <div class="phase-actions has-back">
+                <button type="button" class="btn btn-outline" data-action="back">&larr; Back</button>
+                <button type="button" class="btn btn-solid" data-action="next">Review &amp; Submit &rarr;</button>
+              </div>
+            </div>
+          </div>
 
           <!-- TASK 6: Phase 3 + success panel -->
         </form>
