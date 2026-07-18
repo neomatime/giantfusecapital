@@ -30,6 +30,11 @@
 .navbar-toggle { display: inline-flex; position: relative; z-index: 202; font-size: 1.4rem; color: var(--color-navy); }
 @media (min-width: 1025px) { .navbar-toggle { display: none; } }
 
+/* z-index 200/201/202 (backdrop/panel/toggle) assumes nothing persistent on the page
+   exceeds the navbar's own z-index: 50 context — e.g. the Home preloader (z-index: 9999)
+   is safe because it's gone (opacity: 0, pointer-events: none) before this can open. If a
+   future sticky/fixed element needs a higher z-index than the navbar, this range may need
+   to move too. */
 .navbar-backdrop {
   position: fixed;
   inset: 0;
@@ -68,3 +73,4 @@
 .navbar-mobile-links a { font-size: 1rem; font-weight: 500; color: var(--color-light-gray); padding: var(--space-8) 0; }
 
 body.nav-open { overflow: hidden; }
+@media (min-width: 1025px) { body.nav-open { overflow: auto; } }
