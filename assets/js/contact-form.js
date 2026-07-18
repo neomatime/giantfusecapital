@@ -19,7 +19,17 @@
   function isPhase2Valid(data) {
     return Boolean(data.fullName && data.fullName.trim()) &&
       isValidEmailFormat(data.workEmail) &&
-      Boolean(data.company && data.company.trim());
+      Boolean(data.company && data.company.trim()) &&
+      Boolean(data.country);
+  }
+
+  function escapeHtml(value) {
+    return String(value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
   }
 
   const PERSONAS = [
@@ -132,22 +142,22 @@
     setFieldError(form, 'workEmail', !isValidEmailFormat(data.workEmail));
     setFieldError(form, 'company', !(data.company && data.company.trim()));
     setFieldError(form, 'country', !data.country);
-    return isPhase2Valid(data) && Boolean(data.country);
+    return isPhase2Valid(data);
   }
 
   function reviewRow(label, value) {
-    return `<div class="review-row"><dt>${label}</dt><dd>${value}</dd></div>`;
+    return `<div class="review-row"><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(value)}</dd></div>`;
   }
 
   function renderReview(data, container) {
     const personaLabel = (PERSONAS.find((p) => p.value === data.persona) || {}).label || '—';
     const solutionLabels = data.solutions.map((v) => (SOLUTIONS.find((s) => s.value === v) || {}).label || v).join(', ');
-    let html = '<dl class="review-group"><h4>Your Enquiry</h4>';
+    let html = '<div class="review-group"><h4>Your Enquiry</h4><dl>';
     html += reviewRow('I am a(n)', personaLabel);
     html += reviewRow('Interested in', solutionLabels || '—');
     html += reviewRow('Purpose', PURPOSE_LABELS[data.purpose] || '—');
     if (data.enquiryNotes) html += reviewRow('Notes', data.enquiryNotes);
-    html += '</dl><dl class="review-group"><h4>Contact Details</h4>';
+    html += '</dl></div><div class="review-group"><h4>Contact Details</h4><dl>';
     html += reviewRow('Full Name', data.fullName);
     html += reviewRow('Work Email', data.workEmail);
     html += reviewRow('Company', data.company);
@@ -157,7 +167,7 @@
     html += reviewRow('Contact Preference', CONTACT_PREF_LABELS[data.contactPreference] || '—');
     if (data.bestTime) html += reviewRow('Best Time', BEST_TIME_LABELS[data.bestTime] || data.bestTime);
     if (data.additionalInfo) html += reviewRow('Additional Info', data.additionalInfo);
-    html += '</dl>';
+    html += '</dl></div>';
     container.innerHTML = html;
   }
 
@@ -240,7 +250,7 @@
     goToStep(1);
   }
 
-  const api = { isValidEmailFormat, isPhase1Valid, isPhase2Valid, init };
+  const api = { isValidEmailFormat, isPhase1Valid, isPhase2Valid, escapeHtml, init };
 
   if (typeof window !== 'undefined') {
     window.Giantfuse = window.Giantfuse || {};

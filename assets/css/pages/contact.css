@@ -79,7 +79,7 @@ select:focus, textarea:focus, input:focus { outline: none; border-color: var(--c
 }
 textarea { resize: vertical; }
 
-.persona-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-12); }
+.persona-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-12); border: 1.5px solid transparent; border-radius: var(--radius-sm); padding: var(--space-8); }
 @media (min-width: 641px) { .persona-grid { grid-template-columns: repeat(3, 1fr); } }
 @media (min-width: 1025px) { .persona-grid { grid-template-columns: repeat(5, 1fr); } }
 .persona-option { position: relative; }
@@ -102,7 +102,7 @@ textarea { resize: vertical; }
 .persona-option .icon-badge { width: 40px; height: 40px; }
 .persona-option .icon-badge svg { width: 20px; height: 20px; }
 
-.solution-checklist { display: grid; grid-template-columns: 1fr; gap: var(--space-12); }
+.solution-checklist { display: grid; grid-template-columns: 1fr; gap: var(--space-12); border: 1.5px solid transparent; border-radius: var(--radius-sm); padding: var(--space-8); }
 @media (min-width: 641px) { .solution-checklist { grid-template-columns: repeat(2, 1fr); } }
 .solution-option { position: relative; }
 .solution-option input { position: absolute; opacity: 0; width: 1px; height: 1px; }
