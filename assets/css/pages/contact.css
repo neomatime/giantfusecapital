@@ -1,0 +1,7 @@
+.contact-info-bar { background: var(--color-off-white); padding: var(--space-48) 0; border-bottom: 1px solid var(--color-light-gray); }
+.contact-info-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-32); }
+@media (min-width: 641px) { .contact-info-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1025px) { .contact-info-grid { grid-template-columns: repeat(4, 1fr); } }
+.contact-info-item { display: flex; gap: var(--space-16); align-items: flex-start; }
+.contact-info-item h4 { margin-bottom: var(--space-4); }
+.contact-info-item p { font-size: 0.9rem; }
