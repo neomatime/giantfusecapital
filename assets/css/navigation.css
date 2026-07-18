@@ -66,3 +66,5 @@
 .navbar-mobile-divider { height: 1px; background: rgba(255, 255, 255, 0.12); margin: var(--space-24) 0; }
 .navbar-mobile-links { display: flex; flex-direction: column; gap: var(--space-16); }
 .navbar-mobile-links a { font-size: 1rem; font-weight: 500; color: var(--color-light-gray); padding: var(--space-8) 0; }
+
+body.nav-open { overflow: hidden; }

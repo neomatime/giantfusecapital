@@ -1,10 +1,13 @@
 (function () {
   'use strict';
 
+  const TOGGLE_ICON_CLOSED = '☰';
+  const TOGGLE_ICON_OPEN = '✕';
+
   function setActiveLink() {
     if (typeof window === 'undefined' || typeof document === 'undefined') return;
     const current = window.location.pathname.split('/').pop() || 'index.html';
-    document.querySelectorAll('.navbar-links a, .navbar-mobile-menu a').forEach((link) => {
+    document.querySelectorAll('.navbar-links a, .navbar-mobile-links a').forEach((link) => {
       const href = link.getAttribute('href');
       link.classList.toggle('active', href === current);
     });
@@ -13,14 +16,36 @@
   function init() {
     if (typeof document === 'undefined') return;
     setActiveLink();
+
     const toggleBtn = document.querySelector('#navbar-toggle-btn');
     const menu = document.querySelector('#navbar-mobile-menu');
+    const backdrop = document.querySelector('#navbar-backdrop');
+
+    function setOpen(isOpen) {
+      if (menu) menu.classList.toggle('is-open', isOpen);
+      if (backdrop) backdrop.classList.toggle('is-open', isOpen);
+      if (toggleBtn) {
+        toggleBtn.classList.toggle('is-open', isOpen);
+        toggleBtn.setAttribute('aria-expanded', String(isOpen));
+        toggleBtn.textContent = isOpen ? TOGGLE_ICON_OPEN : TOGGLE_ICON_CLOSED;
+      }
+      document.body.classList.toggle('nav-open', isOpen);
+    }
+
     if (toggleBtn && menu) {
       toggleBtn.addEventListener('click', () => {
-        const isOpen = menu.classList.toggle('is-open');
-        toggleBtn.setAttribute('aria-expanded', String(isOpen));
+        setOpen(!menu.classList.contains('is-open'));
       });
     }
+    if (backdrop) {
+      backdrop.addEventListener('click', () => setOpen(false));
+    }
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && menu && menu.classList.contains('is-open')) {
+        setOpen(false);
+      }
+    });
+
     const navbar = document.querySelector('.navbar');
     if (navbar) {
       window.addEventListener('scroll', () => {
