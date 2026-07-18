@@ -121,6 +121,34 @@
     });
   }
 
+  async function renderStrategyDetails() {
+    const container = document.querySelector('#strategy-details-grid');
+    const template = document.querySelector('#strategy-detail-template');
+    if (!container || !template) return;
+    const response = await fetch('data/strategies.json');
+    if (!response.ok) throw new Error('Failed to load data: data/strategies.json');
+    const items = await response.json();
+    renderCards(template, items, container, (node, item) => {
+      const card = node.querySelector('.strategy-detail-card');
+      card.id = item.link.split('#')[1] || '';
+      node.querySelector('[data-field="icon"]').innerHTML = ICONS[item.icon] || '';
+      node.querySelector('[data-field="title"]').textContent = item.title;
+      node.querySelector('[data-field="subtitle"]').textContent = item.subtitle;
+      node.querySelector('[data-field="description"]').textContent = item.fullDescription;
+      const list = node.querySelector('[data-field="highlights"]');
+      item.highlights.forEach((highlight) => {
+        const li = document.createElement('li');
+        const iconSpan = document.createElement('span');
+        iconSpan.className = 'icon-badge';
+        iconSpan.innerHTML = ICONS.checkmark;
+        li.appendChild(iconSpan);
+        li.appendChild(document.createTextNode(highlight));
+        list.appendChild(li);
+      });
+      node.querySelector('[data-field="link"]').setAttribute('href', item.link);
+    });
+  }
+
   async function init() {
     await Promise.all([
       includeStatic('navbar', '[data-include="navbar"]'),
@@ -132,6 +160,7 @@
       await renderStrategies();
       await renderStatistics();
       await renderInsights();
+      await renderStrategyDetails();
     } catch (error) {
       console.error('Failed to render dynamic content:', error);
     } finally {

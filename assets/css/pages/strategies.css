@@ -9,3 +9,10 @@
 .platform-stat .icon-badge svg { width: 22px; height: 22px; }
 .platform-stat strong { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; color: var(--color-navy); margin-bottom: var(--space-4); }
 .platform-stat span { font-size: 0.8rem; color: var(--color-slate); }
+
+.strategy-detail-card .icon-badge { margin-top: -32px; border: 3px solid var(--color-white); }
+.strategy-subtitle { font-size: 0.85rem; color: var(--color-slate); font-style: italic; margin-bottom: var(--space-12); }
+.strategy-detail-card .checklist { margin: var(--space-16) 0; gap: var(--space-8); }
+.strategy-detail-card .checklist li { font-weight: 400; font-size: 0.85rem; color: var(--color-slate); }
+.strategy-detail-card .checklist .icon-badge { width: 20px; height: 20px; background: transparent; color: var(--color-teal); }
+.strategy-detail-card .checklist .icon-badge svg { width: 12px; height: 12px; }

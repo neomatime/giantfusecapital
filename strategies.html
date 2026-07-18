@@ -62,6 +62,29 @@
         </div>
       </div>
     </section>
+
+    <section class="section" data-reveal>
+      <div class="container">
+        <div class="section-heading">
+          <h2>Our Core <span class="text-teal">Strategies</span></h2>
+          <p>Focused strategies. Deep expertise. Measurable outcomes.</p>
+        </div>
+        <div class="grid-4" id="strategy-details-grid"></div>
+      </div>
+      <template id="strategy-detail-template">
+        <div class="card strategy-detail-card" data-reveal>
+          <div class="card-media">Photo: strategy-background</div>
+          <div class="card-body">
+            <div class="icon-badge" data-field="icon"></div>
+            <h3 data-field="title"></h3>
+            <p class="strategy-subtitle" data-field="subtitle"></p>
+            <p data-field="description"></p>
+            <ul class="checklist" data-field="highlights"></ul>
+            <a href="#" class="card-link" data-field="link">Learn More &rarr;</a>
+          </div>
+        </div>
+      </template>
+    </section>
   </main>
 
   <div data-include="footer"></div>

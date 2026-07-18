@@ -1,6 +1,38 @@
 [
-  { "icon": "growth", "title": "Private Equity", "description": "Partnering with exceptional businesses to unlock value and drive sustainable growth across sectors.", "link": "strategies.html#private-equity" },
-  { "icon": "pie", "title": "Hedge Fund Solutions", "description": "Access to a range of hedge fund strategies designed to deliver consistent, risk-adjusted returns.", "link": "strategies.html#hedge-fund-solutions" },
-  { "icon": "building", "title": "Real Estate", "description": "Investing in high-quality assets that generate stable income and long-term capital appreciation.", "link": "strategies.html#real-estate" },
-  { "icon": "shield", "title": "Credit & Insurance", "description": "Delivering attractive yield opportunities through private credit and insurance solutions.", "link": "strategies.html#credit-insurance" }
+  {
+    "icon": "growth",
+    "title": "Private Equity",
+    "description": "Partnering with exceptional businesses to unlock value and drive sustainable growth across sectors.",
+    "link": "strategies.html#private-equity",
+    "subtitle": "Building value in private businesses",
+    "fullDescription": "We invest in high-quality companies with strong fundamentals and growth potential. Our approach focuses on active value creation, operational improvement and strategic growth.",
+    "highlights": ["Control and minority investments", "Sector-focused approach", "Active involvement", "Long-term partnerships"]
+  },
+  {
+    "icon": "pie",
+    "title": "Hedge Fund Solutions",
+    "description": "Access to a range of hedge fund strategies designed to deliver consistent, risk-adjusted returns.",
+    "link": "strategies.html#hedge-fund-solutions",
+    "subtitle": "Access to exceptional talent",
+    "fullDescription": "We provide access to a curated selection of best-in-class hedge fund managers across a range of strategies designed to deliver uncorrelated returns and portfolio diversification.",
+    "highlights": ["Global manager network", "Multi-strategy solutions", "Risk-managed allocations", "Enhanced diversification"]
+  },
+  {
+    "icon": "building",
+    "title": "Real Estate",
+    "description": "Investing in high-quality assets that generate stable income and long-term capital appreciation.",
+    "link": "strategies.html#real-estate",
+    "subtitle": "Investing in quality assets",
+    "fullDescription": "We invest across the real estate value chain to generate stable income and long-term capital appreciation in high-quality properties and developments.",
+    "highlights": ["Income-generating assets", "Strategic locations", "Active asset management", "Sustainable developments"]
+  },
+  {
+    "icon": "shield",
+    "title": "Credit & Insurance",
+    "description": "Delivering attractive yield opportunities through private credit and insurance solutions.",
+    "link": "strategies.html#credit-insurance",
+    "subtitle": "Providing capital with conviction",
+    "fullDescription": "We deploy capital across private credit and insurance solutions, providing attractive yields through disciplined underwriting and strong risk management.",
+    "highlights": ["Private credit solutions", "Insurance-linked investments", "Strong risk discipline", "Attractive risk-adjusted yields"]
+  }
 ]
