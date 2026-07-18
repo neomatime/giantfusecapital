@@ -222,13 +222,25 @@ git commit -m "feat: add leadership page content data"
 </html>
 ```
 
-- [ ] **Step 2: Create an empty page-specific stylesheet so the `<link>` in Step 1 doesn't 404**
+- [ ] **Step 2: Create the page-specific stylesheet with the stats-band grid CSS**
 
-Create `assets/css/pages/leadership.css` with no content yet (Task 3 will populate it):
+`.platform-stats`/`.platform-stat` (used by the stats band in Step 1) are defined only in `assets/css/pages/strategies.css`, which this page does not link. Per the project's established duplicate-until-a-third-use convention (already applied to `.hero`/`.closing-cta`), copy those rules into this page's own stylesheet rather than linking `strategies.css` or extracting a new shared file — `.platform-stats` is only the second page to need it.
+
+Create `assets/css/pages/leadership.css`:
 
 ```css
-/* Leadership page styles — populated in Task 3 and Task 4 */
+.platform-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-32) var(--space-16); }
+@media (min-width: 641px) { .platform-stats { grid-template-columns: repeat(4, 1fr); } }
+.platform-stat { text-align: center; padding: 0 var(--space-16); border-left: 1px solid var(--color-light-gray); }
+.platform-stat:first-child { border-left: none; }
+@media (max-width: 640px) { .platform-stat { border-left: none; } }
+.platform-stat .icon-badge { margin: 0 auto var(--space-12); width: 44px; height: 44px; }
+.platform-stat .icon-badge svg { width: 22px; height: 22px; }
+.platform-stat strong { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; color: var(--color-navy); margin-bottom: var(--space-4); }
+.platform-stat span { font-size: 0.8rem; color: var(--color-slate); }
 ```
+
+(Task 3 and Task 4 append to this file — they do not replace it.)
 
 - [ ] **Step 3: Verify the page loads cleanly in the browser**
 
@@ -247,6 +259,14 @@ Using the Claude Browser MCP tools: `preview_start` with `{name: "giantfuse"}` (
    })
    ```
    Expected: `title` is `"Leadership | Giantfuse Capital Partners"`, `eyebrow` is `"Leadership"`, `h1` contains `"Experience. Expertise. Alignment."`, `statCount` is `4`, `ctaHref` is `"contact.html"`, `navActive` is `"Leadership"`.
+3. `javascript_tool`, evaluate:
+   ```js
+   JSON.stringify({
+     display: getComputedStyle(document.querySelector('.platform-stats')).display,
+     gridColumns: getComputedStyle(document.querySelector('.platform-stats')).gridTemplateColumns
+   })
+   ```
+   Expected: `display` is `"grid"` and `gridColumns` lists 4 column-width values (confirms the Step 2 CSS is actually applied, not just present in the file).
 
 - [ ] **Step 4: Commit**
 
@@ -371,9 +391,9 @@ node --check assets/js/main.js
 
 Expected: no output (success).
 
-- [ ] **Step 5: Write `assets/css/pages/leadership.css`**
+- [ ] **Step 5: Append to `assets/css/pages/leadership.css`**
 
-Replace the file's placeholder comment with:
+`leadership.css` already contains the `.platform-stats`/`.platform-stat` rules from Task 2 — do not remove or replace them. Append this below the existing content:
 
 ```css
 .section-heading-row > div:first-child p { margin-top: var(--space-8); max-width: 520px; }
