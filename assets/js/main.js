@@ -152,7 +152,9 @@
   function scrollToHash() {
     if (typeof window === 'undefined' || !window.location.hash) return;
     const target = document.getElementById(window.location.hash.slice(1));
-    if (target) target.scrollIntoView();
+    if (!target) return;
+    target.classList.add('is-revealed');
+    target.scrollIntoView();
   }
 
   async function init() {
