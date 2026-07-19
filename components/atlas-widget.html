@@ -1,0 +1,23 @@
+<div class="atlas-widget">
+  <button class="atlas-launcher" id="atlas-launcher" aria-label="Open chat with Atlas" aria-expanded="false" aria-controls="atlas-panel">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="3"/><path d="M8 17 L8 20.5 L12 17"/></svg>
+  </button>
+  <div class="atlas-panel" id="atlas-panel" role="dialog" aria-label="Chat with Atlas" aria-hidden="true">
+    <div class="atlas-panel-header">
+      <div>
+        <strong>Atlas</strong>
+        <span>Investor Assistant</span>
+      </div>
+      <button type="button" class="atlas-close" id="atlas-close-btn" aria-label="Close chat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+      </button>
+    </div>
+    <div class="atlas-messages" id="atlas-messages"></div>
+    <form class="atlas-input-row" id="atlas-input-form">
+      <input type="text" id="atlas-input" placeholder="Type a message..." autocomplete="off" aria-label="Message">
+      <button type="submit" class="atlas-send" aria-label="Send message">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 L20 4 L14 20 L11 13 L4 12 Z"/></svg>
+      </button>
+    </form>
+  </div>
+</div>

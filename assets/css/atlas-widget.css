@@ -1,0 +1,92 @@
+.atlas-widget { position: fixed; z-index: 150; bottom: 24px; right: 24px; }
+
+.atlas-launcher {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-full);
+  background: var(--color-teal);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(13, 27, 42, 0.1);
+}
+.atlas-launcher svg { width: 26px; height: 26px; }
+
+.atlas-panel {
+  position: fixed;
+  bottom: 92px;
+  right: 24px;
+  width: 360px;
+  height: 480px;
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 16px rgba(13, 27, 42, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+}
+.atlas-panel.is-open { opacity: 1; visibility: visible; transform: translateY(0); }
+
+@media (max-width: 640px) {
+  .atlas-panel { inset: var(--space-16); bottom: var(--space-16); width: auto; height: auto; }
+}
+
+.atlas-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-16);
+  border-bottom: 1px solid var(--color-light-gray);
+  flex-shrink: 0;
+}
+.atlas-panel-header strong { display: block; color: var(--color-navy); }
+.atlas-panel-header span { font-size: 0.8rem; color: var(--color-slate); }
+.atlas-close { color: var(--color-slate); width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; }
+.atlas-close svg { width: 18px; height: 18px; }
+
+.atlas-messages { flex: 1; overflow-y: auto; padding: var(--space-16); display: flex; flex-direction: column; gap: var(--space-12); }
+
+.atlas-message { max-width: 85%; padding: var(--space-8) var(--space-12); font-size: 0.9rem; line-height: 1.5; }
+.atlas-message a { color: inherit; text-decoration: underline; font-weight: 600; }
+.atlas-message-bot { align-self: flex-start; background: var(--color-light-gray); color: var(--color-navy); border-radius: var(--radius-md) var(--radius-md) var(--radius-md) 0; }
+.atlas-message-user { align-self: flex-end; background: var(--color-teal); color: var(--color-white); border-radius: var(--radius-md) var(--radius-md) 0 var(--radius-md); }
+
+.atlas-typing { align-self: flex-start; background: var(--color-light-gray); border-radius: var(--radius-md) var(--radius-md) var(--radius-md) 0; padding: var(--space-8) var(--space-12); display: flex; gap: 4px; }
+.atlas-typing span { width: 6px; height: 6px; border-radius: var(--radius-full); background: var(--color-slate); opacity: 0.5; animation: atlas-typing-bounce 1s infinite; }
+.atlas-typing span:nth-child(2) { animation-delay: 0.15s; }
+.atlas-typing span:nth-child(3) { animation-delay: 0.3s; }
+@keyframes atlas-typing-bounce { 0%, 60%, 100% { transform: translateY(0); opacity: 0.5; } 30% { transform: translateY(-4px); opacity: 1; } }
+
+.atlas-input-row { display: flex; gap: var(--space-8); padding: var(--space-16); border-top: 1px solid var(--color-light-gray); flex-shrink: 0; }
+.atlas-input-row input {
+  flex: 1;
+  padding: var(--space-8) var(--space-12);
+  border: 1.5px solid var(--color-light-gray);
+  border-radius: var(--radius-sm);
+  font-family: 'Lato', sans-serif;
+  font-size: 0.9rem;
+  color: var(--color-navy);
+}
+.atlas-input-row input:focus { outline: none; border-color: var(--color-teal); }
+.atlas-send {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background: var(--color-teal);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.atlas-send svg { width: 16px; height: 16px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .atlas-panel { transition: opacity 0.25s ease, visibility 0.25s ease; transform: none; }
+  .atlas-typing span { animation: none; }
+}

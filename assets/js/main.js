@@ -196,6 +196,7 @@
     await Promise.all([
       includeStatic('navbar', '[data-include="navbar"]'),
       includeStatic('footer', '[data-include="footer"]'),
+      includeStatic('atlas-widget', '[data-include="atlas-widget"]'),
     ]);
     syncNavbarHeight();
     if (window.Giantfuse && window.Giantfuse.Nav) window.Giantfuse.Nav.init();
