@@ -23,7 +23,13 @@
     </div>
     <div class="atlas-messages" id="atlas-messages" role="log" aria-live="polite"></div>
     <form class="atlas-input-row" id="atlas-input-form">
-      <input type="text" id="atlas-input" placeholder="Type a message..." autocomplete="off" aria-label="Message">
+      <button type="button" class="atlas-mic" id="atlas-mic-btn" aria-pressed="false" aria-label="Speak your message">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v4M9 21h6"/></svg>
+      </button>
+      <div class="atlas-input-wrap" id="atlas-input-wrap">
+        <input type="text" id="atlas-input" placeholder="Type a message..." autocomplete="off" aria-label="Message">
+        <span class="atlas-mic-wave" aria-hidden="true">Listening<span class="atlas-wave-bars"><span></span><span></span><span></span><span></span></span></span>
+      </div>
       <button type="submit" class="atlas-send" aria-label="Send message">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 L20 4 L14 20 L11 13 L4 12 Z"/></svg>
       </button>
