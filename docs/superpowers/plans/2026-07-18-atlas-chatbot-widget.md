@@ -168,10 +168,13 @@ git commit -m "feat: add Atlas keyword reply-matching logic"
 - Create: `components/atlas-widget.html`
 - Create: `assets/css/atlas-widget.css`
 - Modify: `index.html` (add the CSS `<link>` and the `data-include` div — NOT the `<script>` tag yet, that's Task 4)
+- Modify: `assets/js/main.js` (add `atlas-widget` to the `Promise.all` fetch list inside `init()` — required, see below)
 
 **Interfaces:**
 - Consumes: `ICONS.chatBubble`, `ICONS.close`, `ICONS.send` (Task 1, copied as static HTML).
 - Produces: `#atlas-launcher`, `#atlas-panel`, `#atlas-close-btn`, `#atlas-messages`, `#atlas-input-form`, `#atlas-input` — all the element IDs Task 4's DOM behavior will query. The panel is not yet interactive (no JS behavior exists until Task 4) — clicking the launcher does nothing at this point, which is expected.
+
+**Note (correction found during implementation):** `data-include="atlas-widget"` alone does nothing — `main.js`'s `fetchInclude`/`includeStatic` mechanism only fetches a partial into a `[data-include]` element when it's explicitly named in `init()`'s `Promise.all` array (there's no generic "fetch every `[data-include]` element" scan). Without this addition, the widget's `<div data-include="atlas-widget"></div>` would sit empty forever. Step 3 below includes this fix.
 
 - [ ] **Step 1: Write `components/atlas-widget.html`**
 
@@ -334,7 +337,28 @@ Replace with:
   <script src="assets/js/counters.js"></script>
 ```
 
-- [ ] **Step 4: Verify in the browser**
+- [ ] **Step 4: Add `atlas-widget` to the fetch list in `assets/js/main.js`**
+
+Find:
+
+```js
+    await Promise.all([
+      includeStatic('navbar', '[data-include="navbar"]'),
+      includeStatic('footer', '[data-include="footer"]'),
+    ]);
+```
+
+Replace with:
+
+```js
+    await Promise.all([
+      includeStatic('navbar', '[data-include="navbar"]'),
+      includeStatic('footer', '[data-include="footer"]'),
+      includeStatic('atlas-widget', '[data-include="atlas-widget"]'),
+    ]);
+```
+
+- [ ] **Step 5: Verify in the browser**
 
 Using the Claude Browser MCP tools: `preview_start` with `{name: "giantfuse"}`, navigate to `index.html`, then:
 
@@ -351,10 +375,10 @@ Using the Claude Browser MCP tools: `preview_start` with `{name: "giantfuse"}`, 
    Expected: `launcherExists` and `panelExists` both `true`, `panelIsOpen` is `false` (nothing opens it yet — Task 4's job), `launcherZIndex` is `"150"`.
 3. Take a screenshot — confirm a teal circular button with a chat-bubble icon appears fixed in the bottom-right corner of the page, floating above the page content.
 
-- [ ] **Step 5: Commit**
+- [ ] **Step 6: Commit**
 
 ```bash
-git add components/atlas-widget.html assets/css/atlas-widget.css index.html
+git add components/atlas-widget.html assets/css/atlas-widget.css index.html assets/js/main.js
 git commit -m "feat: add Atlas widget markup and styles, wired into Home page"
 ```
 
