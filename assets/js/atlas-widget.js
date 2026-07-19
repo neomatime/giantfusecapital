@@ -106,8 +106,8 @@
           voiceOn = !voiceOn;
           voiceToggle.setAttribute('aria-pressed', String(voiceOn));
           voiceToggle.setAttribute('aria-label', voiceOn ? 'Turn Atlas voice off' : 'Turn Atlas voice on');
-          if (iconMuted) iconMuted.hidden = voiceOn;
-          if (iconUnmuted) iconUnmuted.hidden = !voiceOn;
+          if (iconMuted) iconMuted.toggleAttribute('hidden', voiceOn);
+          if (iconUnmuted) iconUnmuted.toggleAttribute('hidden', !voiceOn);
           if (!voiceOn) {
             window.speechSynthesis.cancel();
           }
