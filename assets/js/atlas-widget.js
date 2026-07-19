@@ -29,15 +29,31 @@
     const messages = document.querySelector('#atlas-messages');
     const form = document.querySelector('#atlas-input-form');
     const input = document.querySelector('#atlas-input');
+    const voiceToggle = document.querySelector('#atlas-voice-toggle');
     if (!launcher || !panel || !messages || !form || !input) return;
 
     let greeted = false;
+    let voiceOn = false;
+    const voiceSupported = typeof window !== 'undefined' && !!window.speechSynthesis;
+
+    function stripHtml(html) {
+      const el = document.createElement('div');
+      el.innerHTML = html;
+      return el.textContent;
+    }
+
+    function speak(html) {
+      if (!voiceSupported || !voiceOn) return;
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.speak(new SpeechSynthesisUtterance(stripHtml(html)));
+    }
 
     function addMessage(text, sender) {
       const el = document.createElement('div');
       el.className = 'atlas-message atlas-message-' + sender;
       if (sender === 'bot') {
         el.innerHTML = text;
+        speak(text);
       } else {
         el.textContent = text;
       }
@@ -69,6 +85,8 @@
           greeted = true;
           addMessage(GREETING, 'bot');
         }
+      } else if (voiceSupported) {
+        window.speechSynthesis.cancel();
       }
     }
 
@@ -78,11 +96,32 @@
     if (closeBtn) {
       closeBtn.addEventListener('click', () => setOpen(false));
     }
+    if (voiceToggle) {
+      if (!voiceSupported) {
+        voiceToggle.hidden = true;
+      } else {
+        const iconMuted = voiceToggle.querySelector('.atlas-icon-muted');
+        const iconUnmuted = voiceToggle.querySelector('.atlas-icon-unmuted');
+        voiceToggle.addEventListener('click', () => {
+          voiceOn = !voiceOn;
+          voiceToggle.setAttribute('aria-pressed', String(voiceOn));
+          voiceToggle.setAttribute('aria-label', voiceOn ? 'Turn Atlas voice off' : 'Turn Atlas voice on');
+          if (iconMuted) iconMuted.toggleAttribute('hidden', voiceOn);
+          if (iconUnmuted) iconUnmuted.toggleAttribute('hidden', !voiceOn);
+          if (!voiceOn) {
+            window.speechSynthesis.cancel();
+          }
+        });
+      }
+    }
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape' && panel.classList.contains('is-open')) {
         setOpen(false);
       }
     });
+    if (voiceSupported) {
+      window.addEventListener('pagehide', () => window.speechSynthesis.cancel());
+    }
 
     form.addEventListener('submit', (event) => {
       event.preventDefault();

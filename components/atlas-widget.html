@@ -8,9 +8,15 @@
         <strong>Atlas</strong>
         <span>Investor Assistant</span>
       </div>
-      <button type="button" class="atlas-close" id="atlas-close-btn" aria-label="Close chat">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
-      </button>
+      <div class="atlas-panel-header-actions">
+        <button type="button" class="atlas-voice-toggle" id="atlas-voice-toggle" aria-pressed="false" aria-label="Turn Atlas voice on">
+          <svg class="atlas-icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9 L4 15 L8 15 L13 19 L13 5 L8 9 Z"/><line x1="16" y1="9" x2="21" y2="14"/><line x1="21" y1="9" x2="16" y2="14"/></svg>
+          <svg class="atlas-icon-unmuted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden><path d="M4 9 L4 15 L8 15 L13 19 L13 5 L8 9 Z"/><path d="M16 8 a5 5 0 0 1 0 8"/><path d="M18.5 5.5 a9 9 0 0 1 0 13"/></svg>
+        </button>
+        <button type="button" class="atlas-close" id="atlas-close-btn" aria-label="Close chat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+        </button>
+      </div>
     </div>
     <div class="atlas-messages" id="atlas-messages" role="log" aria-live="polite"></div>
     <form class="atlas-input-row" id="atlas-input-form">
