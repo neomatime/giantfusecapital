@@ -119,6 +119,9 @@
         setOpen(false);
       }
     });
+    if (voiceSupported) {
+      window.addEventListener('pagehide', () => window.speechSynthesis.cancel());
+    }
 
     form.addEventListener('submit', (event) => {
       event.preventDefault();
