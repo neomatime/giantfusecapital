@@ -30,11 +30,20 @@
     const form = document.querySelector('#atlas-input-form');
     const input = document.querySelector('#atlas-input');
     const voiceToggle = document.querySelector('#atlas-voice-toggle');
+    const micBtn = document.querySelector('#atlas-mic-btn');
+    const inputWrap = document.querySelector('#atlas-input-wrap');
     if (!launcher || !panel || !messages || !form || !input) return;
 
     let greeted = false;
     let voiceOn = false;
+    let micDisclosureShown = false;
+    let recognition = null;
     const voiceSupported = typeof window !== 'undefined' && !!window.speechSynthesis;
+    const SpeechRecognitionCtor = typeof window !== 'undefined' ? (window.SpeechRecognition || window.webkitSpeechRecognition) : undefined;
+    const micSupported = !!SpeechRecognitionCtor;
+
+    const MIC_DISCLOSURE = 'Voice input uses your browser\'s built-in speech recognition, which sends your recording to your browser\'s speech service to transcribe it.';
+    const MIC_BLOCKED = 'Microphone access was blocked. You can still type your message.';
 
     function stripHtml(html) {
       const el = document.createElement('div');
@@ -85,8 +94,13 @@
           greeted = true;
           addMessage(GREETING, 'bot');
         }
-      } else if (voiceSupported) {
-        window.speechSynthesis.cancel();
+      } else {
+        if (voiceSupported) {
+          window.speechSynthesis.cancel();
+        }
+        if (recognition && micBtn && micBtn.classList.contains('is-listening')) {
+          recognition.stop();
+        }
       }
     }
 
@@ -111,6 +125,45 @@
           if (!voiceOn) {
             window.speechSynthesis.cancel();
           }
+        });
+      }
+    }
+    if (micBtn) {
+      if (!micSupported || !inputWrap) {
+        micBtn.hidden = true;
+      } else {
+        recognition = new SpeechRecognitionCtor();
+        recognition.continuous = false;
+        recognition.interimResults = false;
+
+        const setListening = (isListening) => {
+          micBtn.classList.toggle('is-listening', isListening);
+          micBtn.setAttribute('aria-pressed', String(isListening));
+          inputWrap.classList.toggle('is-listening', isListening);
+        };
+
+        recognition.addEventListener('result', (event) => {
+          input.value = event.results[0][0].transcript;
+        });
+        recognition.addEventListener('end', () => setListening(false));
+        recognition.addEventListener('error', (event) => {
+          setListening(false);
+          if (event.error === 'not-allowed') {
+            addMessage(MIC_BLOCKED, 'system');
+          }
+        });
+
+        micBtn.addEventListener('click', () => {
+          if (micBtn.classList.contains('is-listening')) {
+            recognition.stop();
+            return;
+          }
+          if (!micDisclosureShown) {
+            micDisclosureShown = true;
+            addMessage(MIC_DISCLOSURE, 'system');
+          }
+          setListening(true);
+          recognition.start();
         });
       }
     }
