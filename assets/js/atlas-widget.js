@@ -18,7 +18,87 @@
     return 'I\'m not able to answer that directly, but our team can help — reach out through our <a href="contact.html">Investor Enquiry</a> form and we\'ll get back to you.';
   }
 
-  const api = { matchReply };
+  const GREETING = 'Hi, I\'m Atlas — I can help you learn about our investment strategies, leadership team, or how to get in touch. What would you like to know?';
+  const TYPING_DELAY_MS = 600;
+
+  function init() {
+    if (typeof document === 'undefined') return;
+    const launcher = document.querySelector('#atlas-launcher');
+    const panel = document.querySelector('#atlas-panel');
+    const closeBtn = document.querySelector('#atlas-close-btn');
+    const messages = document.querySelector('#atlas-messages');
+    const form = document.querySelector('#atlas-input-form');
+    const input = document.querySelector('#atlas-input');
+    if (!launcher || !panel || !messages || !form || !input) return;
+
+    let greeted = false;
+
+    function addMessage(text, sender) {
+      const el = document.createElement('div');
+      el.className = 'atlas-message atlas-message-' + sender;
+      if (sender === 'bot') {
+        el.innerHTML = text;
+      } else {
+        el.textContent = text;
+      }
+      messages.appendChild(el);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    function showTyping() {
+      const el = document.createElement('div');
+      el.className = 'atlas-typing';
+      el.id = 'atlas-typing-indicator';
+      el.innerHTML = '<span></span><span></span><span></span>';
+      messages.appendChild(el);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    function hideTyping() {
+      const el = document.querySelector('#atlas-typing-indicator');
+      if (el) el.remove();
+    }
+
+    function setOpen(isOpen) {
+      panel.classList.toggle('is-open', isOpen);
+      panel.setAttribute('aria-hidden', String(!isOpen));
+      launcher.setAttribute('aria-expanded', String(isOpen));
+      if (isOpen) {
+        input.focus();
+        if (!greeted) {
+          greeted = true;
+          addMessage(GREETING, 'bot');
+        }
+      }
+    }
+
+    launcher.addEventListener('click', () => {
+      setOpen(!panel.classList.contains('is-open'));
+    });
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => setOpen(false));
+    }
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && panel.classList.contains('is-open')) {
+        setOpen(false);
+      }
+    });
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const value = input.value.trim();
+      if (!value) return;
+      addMessage(value, 'user');
+      input.value = '';
+      showTyping();
+      setTimeout(() => {
+        hideTyping();
+        addMessage(matchReply(value), 'bot');
+      }, TYPING_DELAY_MS);
+    });
+  }
+
+  const api = { matchReply, init };
 
   if (typeof window !== 'undefined') {
     window.Giantfuse = window.Giantfuse || {};

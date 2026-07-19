@@ -201,6 +201,7 @@
     syncNavbarHeight();
     if (window.Giantfuse && window.Giantfuse.Nav) window.Giantfuse.Nav.init();
     if (window.Giantfuse && window.Giantfuse.ContactForm) window.Giantfuse.ContactForm.init();
+    if (window.Giantfuse && window.Giantfuse.AtlasWidget) window.Giantfuse.AtlasWidget.init();
     try {
       await renderStrategies();
       await renderStatistics();
