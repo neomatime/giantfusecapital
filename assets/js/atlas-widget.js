@@ -163,7 +163,11 @@
             addMessage(MIC_DISCLOSURE, 'system');
           }
           setListening(true);
-          recognition.start();
+          try {
+            recognition.start();
+          } catch (err) {
+            setListening(false);
+          }
         });
       }
     }
