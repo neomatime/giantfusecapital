@@ -33,8 +33,7 @@
 .navbar-actions { display: flex; align-items: center; gap: var(--space-16); justify-self: end; }
 .navbar-actions .navbar-cta { display: none; }
 @media (min-width: 1025px) { .navbar-actions .navbar-cta { display: inline-flex; } }
-.navbar-toggle { display: inline-flex; position: relative; z-index: 202; font-size: 1.4rem; color: var(--color-white); transition: color 0.3s ease; }
-.navbar.is-scrolled .navbar-toggle { color: var(--color-navy); }
+.navbar-toggle { display: inline-flex; position: relative; z-index: 202; font-size: 1.4rem; color: var(--color-navy); }
 @media (min-width: 1025px) { .navbar-toggle { display: none; } }
 
 /* z-index 200/201/202 (backdrop/panel/toggle) assumes nothing persistent on the page
