@@ -49,7 +49,7 @@
     const navbar = document.querySelector('.navbar');
     if (navbar) {
       window.addEventListener('scroll', () => {
-        navbar.classList.toggle('is-scrolled', window.scrollY > 24);
+        navbar.classList.toggle('is-scrolled', window.scrollY > 40);
       });
     }
   }
