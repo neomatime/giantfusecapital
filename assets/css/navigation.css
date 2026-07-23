@@ -7,6 +7,7 @@
   padding-top: 28px;
 }
 .navbar-inner {
+  position: relative;
   max-width: 1400px;
   width: 90%;
   margin: 0 auto;
@@ -52,61 +53,89 @@
 .navbar-actions { display: flex; align-items: center; gap: var(--space-16); grid-column: 3; justify-self: end; }
 .navbar-actions .navbar-cta { display: none; }
 @media (min-width: 1025px) { .navbar-actions .navbar-cta { display: inline-flex; } }
-.navbar-actions .navbar-cta {
+.navbar-actions .navbar-cta,
+.navbar-mobile-cta {
   border-radius: 15px;
   background: linear-gradient(135deg, var(--color-teal), #00838C);
   box-shadow: 0 4px 16px rgba(0, 163, 173, 0.35);
   transition: transform 250ms ease, box-shadow 250ms ease;
 }
-.navbar-actions .navbar-cta:hover {
+.navbar-actions .navbar-cta:hover,
+.navbar-mobile-cta:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 30px rgba(0, 180, 220, 0.35);
 }
-.navbar-toggle { display: inline-flex; position: relative; z-index: 202; font-size: 1.4rem; color: var(--color-white); transition: color 0.3s ease; }
+
+/* Animated hamburger — three bars that rotate/fade into an X via CSS transforms,
+   colored with currentColor so it reuses the same white/navy scroll-state swap
+   already applied to .navbar-toggle's own color. */
+.navbar-toggle {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  color: var(--color-white);
+  transition: color 0.3s ease;
+}
 .navbar.is-scrolled .navbar-toggle { color: var(--color-navy); }
 @media (min-width: 1025px) { .navbar-toggle { display: none; } }
-
-/* z-index 200/201/202 (backdrop/panel/toggle) assumes nothing persistent on the page
-   exceeds the navbar's own z-index: 50 context — e.g. the Home preloader (z-index: 9999)
-   is safe because it's gone (opacity: 0, pointer-events: none) before this can open. If a
-   future sticky/fixed element needs a higher z-index than the navbar, this range may need
-   to move too. */
-.navbar-backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 200;
-  background: rgba(13, 27, 42, 0.6);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+.navbar-toggle-bar {
+  display: block;
+  width: 20px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform 250ms ease, opacity 250ms ease;
 }
-.navbar-backdrop.is-open { opacity: 1; visibility: visible; }
-@media (min-width: 1025px) { .navbar-backdrop { display: none !important; } }
+.navbar-toggle.is-open .navbar-toggle-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.navbar-toggle.is-open .navbar-toggle-bar:nth-child(2) { opacity: 0; }
+.navbar-toggle.is-open .navbar-toggle-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+/* Mobile/tablet dropdown — an extension of the floating pill itself (nested inside
+   .navbar-inner, absolutely positioned relative to it), not a full-height side drawer.
+   Reuses the exact same glass values + scroll-state text-color swap as the pill, since
+   the same contrast math applies: this panel can sit over either the dark hero photo
+   (unscrolled) or light page content (scrolled), same as the pill above it. */
 .navbar-mobile-menu {
-  position: fixed;
-  top: 0;
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 0;
   right: 0;
-  bottom: 0;
-  z-index: 201;
-  width: 85%;
-  max-width: 340px;
-  background: var(--color-navy);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.18), 0 2px 8px rgba(255, 255, 255, 0.05) inset;
+  padding: var(--space-16);
   display: flex;
   flex-direction: column;
-  padding: calc(var(--navbar-height) + var(--space-24)) var(--space-24) var(--space-24);
-  overflow-y: auto;
-  transform: translateX(100%);
+  opacity: 0;
   visibility: hidden;
-  transition: transform 0.3s ease, visibility 0.3s ease;
+  transform: translateY(-8px);
+  transition: opacity 280ms ease, transform 280ms ease, visibility 280ms ease, background 0.3s ease, backdrop-filter 0.3s ease;
 }
-.navbar-mobile-menu.is-open { transform: translateX(0); visibility: visible; }
+.navbar-mobile-menu.is-open { opacity: 1; visibility: visible; transform: translateY(0); }
+.navbar.is-scrolled .navbar-mobile-menu {
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(26px);
+  -webkit-backdrop-filter: blur(26px);
+}
 @media (min-width: 1025px) { .navbar-mobile-menu { display: none !important; } }
 
-.navbar-mobile-cta { justify-content: center; width: 100%; }
-.navbar-mobile-divider { height: 1px; background: rgba(255, 255, 255, 0.12); margin: var(--space-24) 0; }
-.navbar-mobile-links { display: flex; flex-direction: column; gap: var(--space-16); }
-.navbar-mobile-links a { font-size: 1rem; font-weight: 500; color: var(--color-light-gray); padding: var(--space-8) 0; }
+.navbar-mobile-links { display: flex; flex-direction: column; }
+.navbar-mobile-links a {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-white);
+  padding: 18px var(--space-8);
+  transition: color 0.3s ease;
+}
+.navbar.is-scrolled .navbar-mobile-links a { color: var(--color-navy); }
+.navbar-mobile-cta { justify-content: center; width: 100%; margin-top: var(--space-24); }
 
 body.nav-open { overflow: hidden; }
 @media (min-width: 1025px) { body.nav-open { overflow: auto; } }

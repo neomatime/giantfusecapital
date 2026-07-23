@@ -1,9 +1,6 @@
 (function () {
   'use strict';
 
-  const TOGGLE_ICON_CLOSED = '☰';
-  const TOGGLE_ICON_OPEN = '✕';
-
   function setActiveLink() {
     if (typeof window === 'undefined' || typeof document === 'undefined') return;
     const current = window.location.pathname.split('/').pop() || 'index.html';
@@ -19,15 +16,12 @@
 
     const toggleBtn = document.querySelector('#navbar-toggle-btn');
     const menu = document.querySelector('#navbar-mobile-menu');
-    const backdrop = document.querySelector('#navbar-backdrop');
 
     function setOpen(isOpen) {
       if (menu) menu.classList.toggle('is-open', isOpen);
-      if (backdrop) backdrop.classList.toggle('is-open', isOpen);
       if (toggleBtn) {
         toggleBtn.classList.toggle('is-open', isOpen);
         toggleBtn.setAttribute('aria-expanded', String(isOpen));
-        toggleBtn.textContent = isOpen ? TOGGLE_ICON_OPEN : TOGGLE_ICON_CLOSED;
       }
       document.body.classList.toggle('nav-open', isOpen);
     }
@@ -36,9 +30,14 @@
       toggleBtn.addEventListener('click', () => {
         setOpen(!menu.classList.contains('is-open'));
       });
-    }
-    if (backdrop) {
-      backdrop.addEventListener('click', () => setOpen(false));
+      menu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => setOpen(false));
+      });
+      document.addEventListener('click', (event) => {
+        if (!menu.classList.contains('is-open')) return;
+        if (menu.contains(event.target) || toggleBtn.contains(event.target)) return;
+        setOpen(false);
+      });
     }
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape' && menu && menu.classList.contains('is-open')) {
