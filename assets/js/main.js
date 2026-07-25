@@ -82,6 +82,9 @@
       node.querySelector('[data-field="icon"]').innerHTML = ICONS[item.icon] || '';
       node.querySelector('[data-field="title"]').textContent = item.title;
       node.querySelector('[data-field="description"]').textContent = item.description;
+      const image = node.querySelector('[data-field="image"]');
+      image.src = item.image;
+      image.alt = item.title;
       node.querySelector('[data-field="link"]').setAttribute('href', item.link);
     });
   }
@@ -124,6 +127,9 @@
       const date = new Date(item.date);
       const formattedDate = date.toLocaleDateString('en-ZA', { month: 'long', day: 'numeric', year: 'numeric' });
       node.querySelector('[data-field="meta"]').textContent = `${formattedDate} • ${item.readTime}`;
+      const image = node.querySelector('[data-field="image"]');
+      image.src = item.image;
+      image.alt = item.title;
       node.querySelector('[data-field="link"]').setAttribute('href', item.link);
     });
   }

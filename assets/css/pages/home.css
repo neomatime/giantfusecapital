@@ -8,7 +8,7 @@
 .cta-band {
   background:
     linear-gradient(rgba(13, 27, 42, 0.82), rgba(13, 27, 42, 0.9)),
-    url('../../images/office/pexels-startup-stock-photos-7070.jpg') center / cover no-repeat;
+    url('../../images/office/built-on-expertise.jpg') center / cover no-repeat;
   color: var(--color-white);
   padding: var(--space-64) 0;
 }
