@@ -85,6 +85,7 @@
       const image = node.querySelector('[data-field="image"]');
       image.src = item.image;
       image.alt = item.title;
+      image.loading = 'lazy';
       node.querySelector('[data-field="link"]').setAttribute('href', item.link);
     });
   }
@@ -130,6 +131,7 @@
       const image = node.querySelector('[data-field="image"]');
       image.src = item.image;
       image.alt = item.title;
+      image.loading = 'lazy';
       node.querySelector('[data-field="link"]').setAttribute('href', item.link);
     });
   }
