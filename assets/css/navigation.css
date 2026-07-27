@@ -99,16 +99,18 @@
 
 /* Mobile/tablet dropdown — an extension of the floating pill itself (nested inside
    .navbar-inner, absolutely positioned relative to it), not a full-height side drawer.
-   Reuses the exact same glass values + scroll-state text-color swap as the pill, since
-   the same contrast math applies: this panel can sit over either the dark hero photo
-   (unscrolled) or light page content (scrolled), same as the pill above it. */
+   Unlike the slim pill above it, this panel is tall enough to sit directly over the
+   hero's own heading/body text, so it needs a much more opaque backdrop than the pill's
+   subtle glass tint — a faint tint lets that busy text show through and collide visually
+   with the menu's own links. Same white/navy text swap as the pill, but each background
+   tint goes toward near-opaque rather than mostly-transparent. */
 .navbar-mobile-menu {
   position: absolute;
   top: calc(100% + 12px);
   left: 0;
   right: 0;
   border-radius: 22px;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(13, 27, 42, 0.82);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -123,7 +125,7 @@
 }
 .navbar-mobile-menu.is-open { opacity: 1; visibility: visible; transform: translateY(0); }
 .navbar.is-scrolled .navbar-mobile-menu {
-  background: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(26px);
   -webkit-backdrop-filter: blur(26px);
 }
