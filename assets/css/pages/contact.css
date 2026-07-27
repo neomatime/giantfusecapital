@@ -6,7 +6,7 @@
 .contact-info-item h4 { margin-bottom: var(--space-4); }
 .contact-info-item p { font-size: 0.9rem; }
 
-.enquiry-steps { list-style: none; margin: 0 0 var(--space-48); padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-16); position: relative; }
+.enquiry-steps { list-style: none; margin: 0 0 var(--space-48); padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-16); position: relative; }
 .enquiry-steps::before {
   content: '';
   position: absolute;
@@ -151,7 +151,7 @@ textarea { resize: vertical; }
 }
 .phone-field input { flex: 1; }
 
-.contact-pref-group { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-12); }
+.contact-pref-group { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-12); }
 .pref-option input { position: absolute; opacity: 0; width: 1px; height: 1px; }
 .pref-option label {
   display: flex;

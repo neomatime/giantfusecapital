@@ -55,9 +55,9 @@
 .card p { margin-bottom: var(--space-16); font-size: 0.9rem; }
 .card-link { color: var(--color-teal); font-weight: 600; font-size: 0.9rem; }
 
-.grid-4 { display: grid; grid-template-columns: 1fr; gap: var(--space-24); }
-@media (min-width: 641px) { .grid-4 { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 1025px) { .grid-4 { grid-template-columns: repeat(4, 1fr); } }
+.grid-4 { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-24); }
+@media (min-width: 641px) { .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1025px) { .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 
 .icon-badge-outline { background: transparent; color: var(--color-teal); border: 1.5px solid var(--color-teal); }
 .stat-tile { text-align: center; display: flex; flex-direction: column; align-items: center; }
@@ -65,15 +65,15 @@
 .stat-tile .stat-label { font-size: 0.85rem; color: var(--color-slate); margin-top: var(--space-4); }
 .stats-disclaimer { text-align: center; font-size: 0.8rem; color: var(--color-slate); opacity: 0.75; margin-top: var(--space-32); }
 
-.grid-5 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-24); }
-@media (min-width: 641px) { .grid-5 { grid-template-columns: repeat(3, 1fr); } }
-@media (min-width: 1025px) { .grid-5 { grid-template-columns: repeat(5, 1fr); } }
+.grid-5 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-24); }
+@media (min-width: 641px) { .grid-5 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 1025px) { .grid-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
 
 .insight-card .card-media { background: linear-gradient(135deg, var(--color-navy), var(--color-steel-teal)); height: 140px; }
 .insight-card .meta { font-size: 0.8rem; color: var(--color-slate); margin: var(--space-8) 0; }
 
-.grid-3 { display: grid; grid-template-columns: 1fr; gap: var(--space-24); }
-@media (min-width: 641px) { .grid-3 { grid-template-columns: repeat(3, 1fr); } }
+.grid-3 { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-24); }
+@media (min-width: 641px) { .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 
 .section-heading-row { display: flex; justify-content: space-between; align-items: baseline; text-align: left; margin-bottom: var(--space-48); }
 .section-heading-row h2 { margin-bottom: 0; }
