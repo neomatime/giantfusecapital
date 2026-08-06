@@ -41,11 +41,10 @@
   ];
 
   const SOLUTIONS = [
-    { value: 'private-equity', label: 'Private Equity' },
-    { value: 'hedge-fund-solutions', label: 'Hedge Fund Solutions' },
-    { value: 'real-estate', label: 'Real Estate' },
-    { value: 'credit-insurance', label: 'Credit & Insurance' },
-    { value: 'multi-strategy', label: 'Multi-Strategy Solutions' },
+    { value: 'multi-strategy', label: 'Multi-Strategy' },
+    { value: 'long-short-equities', label: 'Long/Short Equities' },
+    { value: 'fixed-income', label: 'Fixed Income' },
+    { value: 'commodities', label: 'Commodities' },
     { value: 'other', label: 'Other' }
   ];
 

@@ -1,10 +1,10 @@
 {
   "team": [
     {
-      "name": "Tebogo Mkhize",
+      "name": "Sibonelo Nkosi",
       "title": "Chief Executive Officer",
-      "bio": "Over 20 years of experience in private equity and investment management. Previously held senior roles at leading investment firms in South Africa.",
-      "initials": "TM",
+      "bio": "Leads Giantfuse Capital Partners' investment strategy and multi-asset platform, with a focus on disciplined, risk-adjusted portfolio construction across equities, fixed income and commodities.",
+      "initials": "SN",
       "linkedin": "#"
     },
     {
@@ -16,15 +16,15 @@
     },
     {
       "name": "Nolitha Dlamini",
-      "title": "Head: Real Assets",
-      "bio": "Specialist in real estate and infrastructure investments with extensive experience in asset acquisition and development.",
+      "title": "Head: Commodities",
+      "bio": "Specialist in commodity and natural resource markets with extensive experience in portfolio construction and risk management.",
       "initials": "ND",
       "linkedin": "#"
     },
     {
       "name": "David Rossouw",
-      "title": "Head: Credit & Insurance",
-      "bio": "Expert in private credit and insurance investments with a focus on risk management and capital preservation.",
+      "title": "Head: Fixed Income",
+      "bio": "Expert in credit and fixed income investments with a focus on risk management and capital preservation.",
       "initials": "DR",
       "linkedin": "#"
     }
