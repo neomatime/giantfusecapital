@@ -41,20 +41,15 @@
 .navbar.is-scrolled .navbar-inner:hover { background: rgba(255, 255, 255, 0.20); }
 
 .navbar-logo { display: flex; align-items: center; grid-column: 1; justify-self: start; }
-/* This logo's crop is ~14:1 (wide wordmark), much flatter than the old mark, so a single
-   fixed height doesn't fit every breakpoint: the nav-links block (~532px, centered) leaves
-   only ~163px for the logo right at the 1025px breakpoint where links first appear, while
-   480-1024px (hamburger only, no links competing) has room to spare. Sizes below are each
-   verified against the real neighboring element at their tightest real width, not just
-   computed from the aspect ratio. */
-.navbar-logo img { height: 11px; width: auto; max-width: none; filter: brightness(0) invert(1); transition: filter 0.3s ease; }
+/* This crop is ~5.5:1 (vs. an earlier, much flatter ~14:1 crop of a different source file
+   that had to be split into separate icon/wordmark assets to stay legible) - reasonable
+   enough that one height fits every breakpoint. 28px is the largest that still clears the
+   tightest real pinch point, right at the 1025px breakpoint where the centered nav-links
+   block (~532px) first appears and only leaves ~163px for the logo (verified empirically:
+   28px needs ~155px, an 8px margin; 30px already overlaps). Mobile/tablet have far more
+   room to spare at this same height. */
+.navbar-logo img { height: 28px; width: auto; max-width: none; filter: brightness(0) invert(1); transition: filter 0.3s ease; }
 .navbar.is-scrolled .navbar-logo img { filter: none; }
-@media (max-width: 480px) {
-  .navbar-logo img { height: 13px; }
-}
-@media (min-width: 481px) and (max-width: 1024px) {
-  .navbar-logo img { height: 22px; }
-}
 .navbar-links { display: none; align-items: center; gap: 40px; grid-column: 2; }
 @media (min-width: 1025px) { .navbar-links { display: flex; } }
 .navbar-links a { font-size: 0.9rem; font-weight: 500; color: var(--color-white); transition: color 250ms ease; }
